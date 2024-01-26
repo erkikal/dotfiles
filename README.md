@@ -1,2 +1,2 @@
-# dotconfig
-Collection of dotfiles
+# dotfiles
+Collection of my dotfiles
