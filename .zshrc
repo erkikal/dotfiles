@@ -37,7 +37,7 @@ function ip-addr (){
 }
 
 # exports
-export XDG_CONFIG_HOME="/Users/erkikal/.config"
+export XDG_CONFIG_HOME=~/.config
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # sources
