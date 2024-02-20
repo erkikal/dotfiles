@@ -1,5 +1,5 @@
-alias -g l="eza -lf"
-alias -g ll="eza -la --group-directories-first"
+alias -g l="eza -laf --color=auto --icons=auto"
+alias -g ll="eza -la --group-directories-first --color=auto --icons=auto"
 alias hist="history 1 | less"
 alias -g vim="nvim"
 alias editrc="vim ~/.zshrc"
