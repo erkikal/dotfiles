@@ -3,12 +3,25 @@ palette = "catppuccin_mocha"
 
 add_newline = false
 command_timeout = 1000
-format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status"""
+format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status\
+$line_break$character"""
 
-# Drop ugly default prompt characters
+[line_break]
+disabled = false
+
 [character]
-success_symbol = ''
-error_symbol = ''
+disabled = false
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+# # Drop ugly default prompt characters
+# [character]
+# success_symbol = ''
+# error_symbol = ''
 
 # ---
 
