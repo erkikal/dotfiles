@@ -10,6 +10,7 @@ alias -g cat=bat
 alias -g lg=lazygit
 
 # COMMON DIRECTORIES
+alias -g cd=z
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
