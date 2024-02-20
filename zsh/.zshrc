@@ -40,6 +40,9 @@ function ip-addr (){
 export XDG_CONFIG_HOME=~/.config
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
+export EDITOR=nvim
+export VISUAL=nvim
+
 # sources
 source <(kubectl completion zsh)
 
