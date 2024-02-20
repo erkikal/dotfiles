@@ -1,6 +1,7 @@
 alias -g l="eza -laf --color=auto --icons=auto"
 alias -g ll="eza -la --group-directories-first --color=auto --icons=auto"
 alias hist="history 1 | less"
+alias -g v="nvim"
 alias -g vim="nvim"
 alias editrc="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
