@@ -3,8 +3,7 @@ palette = "catppuccin_mocha"
 
 add_newline = false
 command_timeout = 1000
-format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status\
-\n"""
+format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status"""
 
 # Drop ugly default prompt characters
 [character]
