@@ -6,6 +6,7 @@ alias editrc="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
 #alias list-sessions="for i in $(tmux ls | awk -F':' '{ print $1 }'); do echo ""; echo $i; tmux list-windows -F '#I "#W"' -t $i | awk '{ print $2 }'; done"
 alias edhost="sudo vim /etc/hosts"
+alias -g cat=bat
 
 # COMMON DIRECTORIES
 alias dl="cd ~/Downloads"
