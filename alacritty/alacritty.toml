@@ -1,0 +1,16 @@
+# themes from https://github.com/alacritty/alacritty-theme
+
+import = ["~/.config/alacritty/themes/catppuccin_mocha.toml"]
+
+[font]
+size = 14
+
+[font.normal]
+family = "Terminess Nerd Font"
+
+[window]
+decorations = "none"
+
+[window.padding]
+x = 7
+y = 0
