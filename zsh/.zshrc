@@ -15,15 +15,15 @@ bindkey "^[[F" end-of-line
 
 # functions
 # Add privileges app request to sudo
-function sudo() {
-    local sudo_status=$(privilegescli --status 2>&1)
-
-    if [[ $sudo_status == *"User $USER has standard user rights"* ]]; then
-        privilegescli --add
-    fi
-
-    command sudo "$@"
-}
+#function sudo() {
+#    local sudo_status=$(privilegescli --status 2>&1)
+#
+#    if [[ $sudo_status == *"User $USER has standard user rights"* ]]; then
+#        privilegescli --add
+#    fi
+#
+#    command sudo "$@"
+#}
 
 # get local network interfaces IP addresses
 function ip-addr (){
