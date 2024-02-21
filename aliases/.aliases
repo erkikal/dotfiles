@@ -3,14 +3,11 @@ alias -g ll="eza -laF --group-directories-first --color=auto --icons=auto"
 alias hist="history 1 | less"
 alias -g v="nvim"
 alias -g vim="nvim"
-alias editrc="vim ~/.zshrc"
 alias reload="source ~/.zshrc"
-alias edhost="sudo vim /etc/hosts"
 alias -g cat=bat
 alias -g lg=lazygit
 
 # COMMON DIRECTORIES
-alias -g cd=z
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
