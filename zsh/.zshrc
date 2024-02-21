@@ -49,11 +49,5 @@ eval "$(gh completion -s zsh)"
 
 eval "$(starship init zsh)"
 
-INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
-
-# Hishtory Config:
-export PATH="$PATH:/Users/erkikal/.hishtory"
-source /Users/erkikal/.hishtory/config.zsh
-
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
