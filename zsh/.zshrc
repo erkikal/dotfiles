@@ -44,8 +44,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # sources
-source <(kubectl completion zsh)
-
 eval "$(zoxide init zsh)"
 eval "$(gh completion -s zsh)"
 
