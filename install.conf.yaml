@@ -1,14 +1,21 @@
 - defaults:
     link:
-      relink: true
+        create: true
+        relink: true
 
-- clean: ['~']
+- clean: ['~', '~/.config']
 
 - link:
-    ~/.byobu/.tmux.conf: .tmux.conf
+    ~/.aliases: aliases/aliases
+    ~/.dotfiles: ''
+    ~/.config/nvim: neovim/erki-kickstart
+    ~/.config/starship: starship
+    ~/.byobu/.tmux.conf: tmux.conf
+    ~/.zsh:
+    ~/.zshrc:
 
 - create:
-    - ~/downloads
+    - ~/.scripts
     - ~/.vim/undo-history
 
 - shell:
