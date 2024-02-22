@@ -1,0 +1,21 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.aliases: aliases/aliases
+    ~/.dotfiles: ''
+    ~/.config/nvim: neovim/erki-kickstart
+    ~/.config/starship: starship
+    ~/.zsh:
+    ~/.zshrc:
+
+- create:
+    - ~/.scripts
+    - ~/.vim/undo-history
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
