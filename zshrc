@@ -10,6 +10,8 @@ compinit
 
 # aliases
 source ~/.aliases 
+source ~/.zsh/git/git.plugin.zsh
+source ~/.zsh/kubectl/kubectl.plugin.zsh
 
 # keybinding
 bindkey "^[[1;5D" backward-word
