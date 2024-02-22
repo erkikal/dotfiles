@@ -8,6 +8,7 @@
 - link:
     ~/.aliases: aliases/aliases
     ~/.dotfiles: ''
+    ~/.config/alacritty: alacritty
     ~/.config/nvim: neovim/erki-kickstart
     ~/.config/starship: starship
     ~/.byobu/.tmux.conf: tmux.conf
