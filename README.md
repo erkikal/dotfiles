@@ -31,10 +31,18 @@ git clone --recursive https://github.com/erkikal/dotfiles.git
 ./install
 ```
 
+```bash
+./install -p dotbot-brew
+```
+
+```bash
+./install -p dotbot-nix-env
+```
+
 - Optionally with a custom install config
 
 ```bash
-./install -c install.remote.conf.yaml
+./install -c install.headless.conf.yaml
 ```
 
 - ...
