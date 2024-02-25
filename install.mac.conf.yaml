@@ -5,6 +5,13 @@
 
 - clean: ['~', '~/.config']
 
+# Installs brew if missing
+- install-brew: true
+
+# Reads brewfile for packages to install
+- brewfile:
+    - Brewfile
+
 - link:
     ~/.aliases: aliases/aliases
     ~/.dotfiles: ''
