@@ -8,7 +8,7 @@ size = 14
 [font.normal]
 family = "Terminess Nerd Font"
 
-# [[hints.enabled]]
+[[hints.enabled]]
 # command = "xdg-open" # On Linux/BSD
 command = "open" # On macOS
 # command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
@@ -21,7 +21,24 @@ regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:
 
 [window]
 decorations = "none"
+option_as_alt = "Both"
 
 [window.padding]
 x = 7
 y = 0
+
+[keyboard]
+bindings = [
+{ key = "2", mods = "Alt", chars = "@" },
+{ key = "3", mods = "Alt", chars = "£" },
+{ key = "4", mods = "Alt", chars = "$" },
+{ key = "6", mods = "Alt", chars = "§" },
+{ key = "7", mods = "Alt", chars = "{" },
+{ key = "8", mods = "Alt", chars = "[" },
+{ key = "9", mods = "Alt", chars = "]" },
+{ key = "0", mods = "Alt", chars = "}" },
+{ key = "+", mods = "Alt", chars = "\\" },
+{ key = "´", mods = "Alt", chars = "`" },
+{ key = "<", mods = "Alt", chars = "|" },
+{ key = "ä", mods = "Alt", chars = "^" },
+]
