@@ -4,8 +4,8 @@ alias hist="history 1 | less"
 alias -g v="nvim"
 alias -g vim="nvim"
 alias reload="source ~/.zshrc"
-alias -g cat=bat
-alias -g lg=lazygit
+alias -g cat="bat"
+alias -g lg="lazygit"
 
 # COMMON DIRECTORIES
 alias dl="cd ~/Downloads"
@@ -14,13 +14,16 @@ alias dc="cd ~/Documents"
 alias home="cd ~"
 
 # confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
+alias -g cp="cp -i"
+alias -g mv="mv -i"
+alias -g rm="rm -i"
 
 # easier to read disk
-alias df='df -h'     # human-readable sizes
-alias free='free -m' # show sizes in MB
+alias -g df="df -h"     # human-readable sizes
+alias -g free="free -m" # show sizes in MB
+
+# Improve common commands
+alias -g mkdir="mkdir -p"
 
 # Tmux alias to list open sessions
 #alias list-sessions="for i in $(tmux ls | awk -F':' '{ print $1 }'); do echo ""; echo $i; tmux list-windows -F '#I "#W"' -t $i | awk '{ print $2 }'; done"
