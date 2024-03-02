@@ -18,7 +18,8 @@
     ~/.config/alacritty: alacritty
     ~/.config/nvim: neovim/erki-kickstart
     ~/.config/starship: starship
-    ~/.byobu/.tmux.conf: tmux.conf
+    ~/.config/zellij: zellij
+    ~/.byobu/.tmux.conf: tmux/tmux.conf
     ~/.zsh:
     ~/.zshrc:
 
