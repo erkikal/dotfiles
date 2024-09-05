@@ -41,4 +41,8 @@ bindings = [
 { key = "´", mods = "Alt", chars = "`" },
 { key = "<", mods = "Alt", chars = "|" },
 { key = "ä", mods = "Alt", chars = "^" },
+{ key = "A", mods = "Control", chars = "^[OH" },
+{ key = "E", mods = "Control", chars = "^[OF" },
+{ key = "V", mods = "Command", action = "Paste" },
+{ key = "C", mods = "Command", action = "Copy" }
 ]
