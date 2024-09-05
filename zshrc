@@ -56,6 +56,13 @@ function yy() {
   rm -f -- "$tmp"
 }
 
+# mkdir and cd into it
+mkcd ()
+{
+  mkdir -p -- "$1" &&
+  cd -P -- "$1"
+}
+
 # exports
 export XDG_CONFIG_HOME=~/.config
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
