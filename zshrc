@@ -4,8 +4,11 @@ fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 
 [[ -f $(brew --prefix switch)/switch.sh ]]; INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
 
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
+
+complete -C '/usr/local/bin/aws_completer' aws
 
 # aliases
 source ~/.aliases 
