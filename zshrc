@@ -37,13 +37,13 @@ bindkey "^E" end-of-line
 
 # get local network interfaces IP addresses
 function ip-addr (){
-    for i in $(ifconfig -lu)
-    do
-        if ifconfig $i | grep -q "inet "
-        then
-            ifconfig $i
-        fi
-    done
+  for i in $(ifconfig -lu)
+  do
+    if ifconfig $i | grep -q "inet "
+    then
+      ifconfig $i
+    fi
+  done
 }
 
 # exports
