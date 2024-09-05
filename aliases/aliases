@@ -22,6 +22,9 @@ alias -g rm="rm -i"
 alias -g df="df -h"     # human-readable sizes
 alias -g free="free -m" # show sizes in MB
 
+# Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
+alias repaste='pbpaste | sed -e "s/^/ /" | pbcopy'
+
 # Improve common commands
 alias -g mkdir="mkdir -p"
 
