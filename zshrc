@@ -46,6 +46,16 @@ function ip-addr (){
   done
 }
 
+# Yazi shell wrapper
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
 # exports
 export XDG_CONFIG_HOME=~/.config
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
