@@ -18,8 +18,10 @@ source ~/.zsh/kubectl/kubectl.plugin.zsh
 # keybinding
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
 
 # functions
 # Add privileges app request to sudo
