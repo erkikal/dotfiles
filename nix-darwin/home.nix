@@ -31,8 +31,11 @@
     "bat".source = ~/github/dotfiles/bat;
     "borders".source = ~/github/dotfiles/borders;
     "btop".source = ~/github/dotfiles/btop;
+    "carapace".source = ~/github/dotfiles/carapace;
     "fastfetch".source = ~/github/dotfiles/fastfetch;
+    "kanata".source = ~/github/dotfiles/kanata;
     "k9s".source = ~/github/dotfiles/k9s;
+    "raycast".source = ~/github/dotfiles/raycast;
     "sketchybar".source = ~/github/dotfiles/sketchybar;
     "yazi".source = ~/github/dotfiles/yazi;
     "zsh".source = ~/github/dotfiles/zsh;
