@@ -6,6 +6,8 @@ command_timeout = 1000
 format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status\
 $line_break$character"""
 
+right_format = """$time"""
+
 [line_break]
 disabled = false
 
