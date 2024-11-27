@@ -15,6 +15,9 @@ compinit
 
 complete -C '/usr/local/bin/aws_completer' aws
 
+# Ignore space lines in history
+setopt hist_ignore_space
+
 # aliases
 source ~/.aliases 
 source ~/.zsh/git/git.plugin.zsh
