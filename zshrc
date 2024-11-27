@@ -83,5 +83,6 @@ export LANG=en_US.UTF-8
 # sources
 eval "$(zoxide init zsh)"
 eval "$(gh completion -s zsh)"
+eval "$(atuin init zsh)"
 
 eval "$(starship init zsh)"
