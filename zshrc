@@ -71,6 +71,12 @@ mkcd ()
   cd -P -- "$1"
 }
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
+
 # exports
 export XDG_CONFIG_HOME=~/.config
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
