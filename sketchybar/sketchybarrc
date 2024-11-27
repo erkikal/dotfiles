@@ -87,9 +87,11 @@ sketchybar --add item spot_logo center \
                            background.color=0xffEDC4E5
 
 
-sketchybar --add item spot center \
+sketchybar --add item spot q \
            --set spot update_freq=1 \
+                      label.max_chars=22 \
                       icon.drawing=off \
+                      scroll_texts=on \
                       updates=on \
                       script="~/.config/sketchybar/plugins/spotifyIndicator.sh" \
                       background.color=0xff3C3E4F \
