@@ -10,19 +10,34 @@
 
 # Makes sense for user specific applications that shouldn't be available system-wide
   home.packages = [
+    pkgs.atuin
+    pkgs.docker
   ];
 
   # Home Manager is pretty good at managing github/dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".zshrc".source = ~/github/dotfiles/zshrc/.zshrc;
-    ".config/wezterm".source = ~/github/dotfiles/wezterm;
-    ".config/starship".source = ~/github/dotfiles/starship;
-    ".config/zellij".source = ~/github/dotfiles/zellij;
-    ".config/nvim".source = ~/github/dotfiles/neovim;
-    ".config/nix".source = ~/github/dotfiles/nix;
-    ".config/nix-darwin".source = ~/github/dotfiles/nix-darwin;
-    # ".config/tmux".source = ~/github/dotfiles/tmux;
+    ".zshrc".source = ~/github/dotfiles/zshrc;
+    ".aliases".source = ~/github/dotfiles/aliases/aliases;
+  };
+  xdg.configFile = {
+    "wezterm".source = ~/github/dotfiles/wezterm;
+    "starship".source = ~/github/dotfiles/starship;
+    "zellij".source = ~/github/dotfiles/zellij;
+    "nvim".source = ~/github/dotfiles/neovim/erki-kickstart;
+    "nix".source = ~/github/dotfiles/nix;
+    "nix-darwin".source = ~/github/dotfiles/nix-darwin;
+    "home-manager/home.nix".source = ~/github/dotfiles/nix-darwin/home.nix;
+    "bat".source = ~/github/dotfiles/bat;
+    "borders".source = ~/github/dotfiles/borders;
+    "btop".source = ~/github/dotfiles/btop;
+    "fastfetch".source = ~/github/dotfiles/fastfetch;
+    "k9s".source = ~/github/dotfiles/k9s;
+    "sketchybar".source = ~/github/dotfiles/sketchybar;
+    "yazi".source = ~/github/dotfiles/yazi;
+    "zsh".source = ~/github/dotfiles/zsh;
+    # "tmux".source = ~/github/dotfiles/tmux;
+
   };
 
   home.sessionVariables = {
