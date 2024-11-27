@@ -1,5 +1,6 @@
 alias -g l="eza -lafF --color=auto --icons=auto"
 alias -g ll="eza -laF --group-directories-first --color=auto --icons=auto"
+alias lt="eza --tree --level=2 --long --icons --git"
 alias hist="history 1 | less"
 alias -g v="nvim"
 alias -g vim="nvim"
@@ -12,6 +13,12 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
 alias home="cd ~"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 
 # confirm before overwriting something
 alias -g cp="cp -i"
