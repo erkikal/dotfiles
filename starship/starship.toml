@@ -126,7 +126,8 @@ disabled = true
 disabled = true
 
 [terraform]
-disabled = true
+format = 'via [$symbol$version]($style)'
+disabled = false
 
 
 [palettes.catppuccin_mocha]
