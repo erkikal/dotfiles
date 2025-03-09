@@ -117,7 +117,7 @@ disabled = true
 disabled = true
 
 [python]
-disabled = true
+disabled = false
 
 [nodejs]
 disabled = true
