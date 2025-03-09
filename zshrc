@@ -15,6 +15,8 @@ compinit
 
 complete -C '/usr/local/bin/aws_completer' aws
 
+fastfetch -c examples/8
+
 # Ignore space lines in history
 setopt hist_ignore_space
 
