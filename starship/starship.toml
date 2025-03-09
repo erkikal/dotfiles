@@ -96,7 +96,7 @@ disabled = false
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\] '
-disabled = false
+disabled = true
 style = 'bold green'
 
 [time]
