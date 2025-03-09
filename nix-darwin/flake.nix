@@ -18,6 +18,7 @@
       environment.systemPackages =
         [ 
           pkgs.carapace
+          # pkgs.ghostty
           pkgs.mkalias
           pkgs.neovim
           pkgs.obsidian
@@ -34,10 +35,15 @@
           "aws-vpn-client"
           "chef-workstation"
           "font-terminess-ttf-nerd-font"
+          "ghostty"
           "keepassxc"
+          "keymapp"
           "linearmouse"
           "logitech-g-hub"
           "logitech-options"
+          # "nikitabobko/tap/aerospace"
+          "orbstack"
+          "raycast"
           "tableplus"
           "vagrant"
           "zen-browser"
@@ -48,6 +54,7 @@
           "libssh2"
           "bat"
           "btop"
+          "direnv"
           "duf"
           "dust"
           "eza"
@@ -79,9 +86,12 @@
           "pwgen"
           "python@3.10"
           "python@3.11"
+          "python@3.12"
+          "python@3.13"
           "ripgrep"
           "sd"
           "starship"
+          "stern"
           "tldr"
           "unar"
           "wget"
@@ -97,6 +107,7 @@
           "felixkratz/formulae/sketchybar"
           "hashicorp/tap/terraform"
           "jeffreywildman/virt-manager/virt-viewer"
+          "robscott/tap/kube-capacity"
         ];
         taps = [
           "argoproj/tap"
@@ -109,12 +120,16 @@
           "homebrew/cask-fonts"
           "homebrew/services"
           "jeffreywildman/virt-manager"
+          "robscott/tap"
         ];
         masApps = {
 
         };
-        onActivation.upgrade = true;
-        onActivation.autoUpdate = true;
+        onActivation = {
+          upgrade = true;
+          autoUpdate = true;
+          cleanup = "uninstall";
+        };
       };
 
       fonts.packages = [
@@ -132,42 +147,6 @@
       system.stateVersion = 4;
       nixpkgs.hostPlatform = "aarch64-darwin";
       security.pam.enableSudoTouchIdAuth = true;
-      # services.kanata = {
-      #   enable = true;
-      #   keyboards = {
-      #     internalKeyboard = {
-      #       devices = [
-      #         "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-      #         "/dev/input/by-id/usb-Framework_Laptop_16_Keyboard_Module_-_ANSI_FRAKDKEN0100000000-event-kbd"
-      #         "/dev/input/by-id/usb-Framework_Laptop_16_Keyboard_Module_-_ANSI_FRAKDKEN0100000000-if02-event-kbd"
-      #       ];
-      #       extraDefCfg = "process-unmapped-keys yes";
-      #       config = ''
-      #         (defsrc
-      #          a s d f j k l ö
-      #         )
-      #         (defvar
-      #          tap-time 150
-      #          hold-time 200
-      #         )
-      #         (defalias
-      #          a (tap-hold $tap-time $hold-time a lmet)
-      #          s (tap-hold $tap-time $hold-time s lalt)
-      #          d (tap-hold $tap-time $hold-time d lsft)
-      #          f (tap-hold $tap-time $hold-time f lctl)
-      #          j (tap-hold $tap-time $hold-time j rctl)
-      #          k (tap-hold $tap-time $hold-time k rsft)
-      #          l (tap-hold $tap-time $hold-time l ralt)
-      #          ö (tap-hold $tap-time $hold-time ö rmet)
-      #         )
-      #
-      #         (deflayer base
-      #          @a  @s  @d  @f  @j  @k  @l  @ö
-      #         )
-      #       '';
-      #     };
-      #   };
-      # };
 
       users.users.erkikal.home = "/Users/erkikal";
       home-manager.backupFileExtension = "backup";
