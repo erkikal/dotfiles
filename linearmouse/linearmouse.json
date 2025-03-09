@@ -1,0 +1,38 @@
+{
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "serialNumber" : "077B356B3630",
+          "productName" : "Gaming Mouse G502",
+          "vendorID" : "0x46d",
+          "productID" : "0xc332",
+          "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productName" : "MX Master 3 Mac",
+          "productID" : "0xb023",
+          "serialNumber" : "7A73AB67A38A9657",
+          "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+}
