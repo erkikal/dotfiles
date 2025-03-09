@@ -32,6 +32,7 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
+bindkey "^[[3~" delete-char
 
 # functions
 # Add privileges app request to sudo
