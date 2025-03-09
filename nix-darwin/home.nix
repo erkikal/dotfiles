@@ -6,7 +6,7 @@
 {
   home.username = "erkikal";
   home.homeDirectory = "/Users/erkikal";
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
 # Makes sense for user specific applications that shouldn't be available system-wide
   home.packages = [
@@ -17,29 +17,31 @@
   # Home Manager is pretty good at managing github/dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".zshrc".source = ~/github/dotfiles/zshrc;
-    ".aliases".source = ~/github/dotfiles/aliases/aliases;
+    ".zshrc".source = "${config.home.homeDirectory}/github/dotfiles/zshrc";
+    ".aliases".source = "${config.home.homeDirectory}/github/dotfiles/aliases/aliases";
   };
   xdg.configFile = {
-    "wezterm".source = ~/github/dotfiles/wezterm;
-    "starship".source = ~/github/dotfiles/starship;
-    "zellij".source = ~/github/dotfiles/zellij;
-    "nvim".source = ~/github/dotfiles/neovim/erki-kickstart;
-    "nix".source = ~/github/dotfiles/nix;
-    "nix-darwin".source = ~/github/dotfiles/nix-darwin;
-    "home-manager/home.nix".source = ~/github/dotfiles/nix-darwin/home.nix;
-    "bat".source = ~/github/dotfiles/bat;
-    "borders".source = ~/github/dotfiles/borders;
-    "btop".source = ~/github/dotfiles/btop;
-    "carapace".source = ~/github/dotfiles/carapace;
-    "fastfetch".source = ~/github/dotfiles/fastfetch;
-    "kanata".source = ~/github/dotfiles/kanata;
-    "k9s".source = ~/github/dotfiles/k9s;
-    "raycast".source = ~/github/dotfiles/raycast;
-    "sketchybar".source = ~/github/dotfiles/sketchybar;
-    "yazi".source = ~/github/dotfiles/yazi;
-    "zsh".source = ~/github/dotfiles/zsh;
-    # "tmux".source = ~/github/dotfiles/tmux;
+    "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
+    "ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/ghostty";
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/neovim/erki-kickstart";
+    "nix".source = "${config.home.homeDirectory}/github/dotfiles/nix";
+    "nix-darwin".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
+    "home-manager/home.nix".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin/home.nix";
+    "starship".source = "${config.home.homeDirectory}/github/dotfiles/starship";
+    "zellij".source = "${config.home.homeDirectory}/github/dotfiles/zellij";
+    "atuin".source = "${config.home.homeDirectory}/github/dotfiles/atuin";
+    "bat".source = "${config.home.homeDirectory}/github/dotfiles/bat";
+    "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
+    "btop".source = "${config.home.homeDirectory}/github/dotfiles/btop";
+    "carapace".source = "${config.home.homeDirectory}/github/dotfiles/carapace";
+    "fastfetch".source = "${config.home.homeDirectory}/github/dotfiles/fastfetch";
+    "kanata".source = "${config.home.homeDirectory}/github/dotfiles/kanata";
+    "k9s".source = "${config.home.homeDirectory}/github/dotfiles/k9s";
+    "raycast".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/raycast";
+    "sketchybar".source = "${config.home.homeDirectory}/github/dotfiles/sketchybar";
+    "yazi".source = "${config.home.homeDirectory}/github/dotfiles/yazi";
+    "zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
+    # "tmux".source = "${config.home.homeDirectory}/github/dotfiles/tmux";
 
   };
 
