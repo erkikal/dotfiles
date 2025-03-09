@@ -2,11 +2,6 @@
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
-export LS_COLORS=$(vivid generate catppuccin-mocha)
-
 [[ -f $(brew --prefix switch)/switch.sh ]]; INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
 
 autoload bashcompinit && bashcompinit
@@ -89,9 +84,14 @@ export EDITOR=nvim
 export VISUAL=nvim
 export LANG=en_US.UTF-8
 
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+export LS_COLORS=$(vivid generate catppuccin-mocha)
+
 # sources
 eval "$(zoxide init zsh)"
 eval "$(gh completion -s zsh)"
 eval "$(atuin init zsh)"
+source <(carapace _carapace zsh)
 
 eval "$(starship init zsh)"
