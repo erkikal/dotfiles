@@ -57,8 +57,9 @@ disabled = false
 
 # Shows current directory
 [directory]
-truncation_length = 2
+truncation_length = 3
 truncation_symbol = '…/'
+truncate_to_repo = false
 home_symbol = '󰋜 ~'
 read_only_style = '197'
 read_only = '  '
