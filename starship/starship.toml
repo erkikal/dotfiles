@@ -3,10 +3,10 @@ palette = "catppuccin_mocha"
 
 add_newline = false
 command_timeout = 1000
-format = """$os$username$hostname$aws$kubernetes$directory$git_branch$git_status\
+format = """$os$username$hostname$kubernetes$directory$git_branch$git_status\
 $line_break$character"""
 
-right_format = """$python $terraform $time"""
+right_format = """$python $terraform $aws $time"""
 
 [line_break]
 disabled = false
@@ -95,8 +95,8 @@ format = '\[[󱃾 $context\($namespace\)](bold purple)\] '
 disabled = false
 
 [aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\] '
-disabled = true
+format = '\[[$symbol($profile)(\[$duration\])]($style)\] '
+disabled = false
 style = 'bold green'
 
 [time]
