@@ -62,6 +62,50 @@ function yy() {
   rm -f -- "$tmp"
 }
 
+# Set AWS_PROFILE environment variable
+function aws-profile() {
+    if [ -f $HOME/.aws/config ]; then
+        if [ -z "$1" ]; then
+            if [ -z "$AWS_PROFILE" ]; then
+                echo "No AWS profile is currently selected."
+            else
+                echo "Currently selected AWS profile is $AWS_PROFILE"
+            fi
+        else
+            local profiles=$(aws configure list-profiles)
+            local profile=$(echo "$profiles" | grep -w "$1")
+            if [[ -n $profile ]]; then
+                echo "Setting AWS_PROFILE to $1"
+                export AWS_PROFILE=$1
+            else
+                echo "Profile $1 not found in $HOME/.aws/config"
+            fi
+        fi
+    else
+        echo "404: $HOME/.aws/config not found."
+    fi
+}
+
+# Autocomplete for aws-profile
+if type aws-profile &>/dev/null; then
+    # Get AWS profiles for completion
+    function _aws_profiles() {
+        if [ -f $HOME/.aws/config ]; then
+            local -a profiles
+            profiles=($(aws configure list-profiles))
+            _describe 'aws profiles' profiles
+        fi
+    }
+    
+    # Define completion for aws-profile
+    function _aws_profile() {
+        _arguments '1: :_aws_profiles'
+    }
+    
+    # Register completion for aws-profile
+    compdef _aws_profile aws-profile
+fi
+
 # mkdir and cd into it
 mkcd ()
 {
@@ -87,6 +131,9 @@ export LANG=en_US.UTF-8
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 export LS_COLORS=$(vivid generate catppuccin-mocha)
+
+# Set AWS_DEFAULT_REGION environment variable. This will set default region for all AWS CLI commands.
+export AWS_DEFAULT_REGION=eu-north-1
 
 # sources
 eval "$(zoxide init zsh)"
