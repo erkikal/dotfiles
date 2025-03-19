@@ -133,10 +133,9 @@
       };
 
       fonts.packages = [
-        (pkgs.nerdfonts.override { fonts = [ "Terminus" ]; })
+        pkgs.nerd-fonts.terminess-ttf
       ];
 
-      services.nix-daemon.enable = true;
       nixpkgs.config.allowUnfree = true;
       nix.settings.experimental-features = "nix-command flakes";
       programs.zsh = {
@@ -146,12 +145,12 @@
       system.configurationRevision = self.rev or self.dirtyRev or null;
       system.stateVersion = 4;
       nixpkgs.hostPlatform = "aarch64-darwin";
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
 
       users.users.erkikal.home = "/Users/erkikal";
       home-manager.backupFileExtension = "backup";
       # nix.configureBuildUser = true;
-      nix.useDaemon = true;
+      ids.uids.nixbld = 300;
 
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
@@ -166,7 +165,7 @@
           rm -rf /Applications/Nix\ Apps
           mkdir -p /Applications/Nix\ Apps
           find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-          while read src; do
+          while read -r src; do
             app_name=$(basename "$src")
             echo "copying $src" >&2
             ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
