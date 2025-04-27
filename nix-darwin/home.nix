@@ -22,7 +22,7 @@
   };
   xdg.configFile = {
     "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
-    "ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/ghostty";
+    "ghostty".source = "${config.home.homeDirectory}/github/dotfiles/ghostty";
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/neovim/erki-kickstart";
     "nix".source = "${config.home.homeDirectory}/github/dotfiles/nix";
     "nix-darwin".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
