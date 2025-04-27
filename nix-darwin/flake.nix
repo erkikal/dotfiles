@@ -18,10 +18,8 @@
       environment.systemPackages =
         [ 
           pkgs.carapace
-          # pkgs.ghostty
           pkgs.mkalias
           pkgs.neovim
-          pkgs.obsidian
           pkgs.vim
           pkgs.vivid
           pkgs.wezterm
@@ -40,12 +38,14 @@
           "keymapp"
           "linearmouse"
           "logitech-g-hub"
-          "logitech-options"
+          # "logitech-options"
           # "nikitabobko/tap/aerospace"
+          "obsidian"
           "orbstack"
           "raycast"
-          "tableplus"
+          # "tableplus"
           "vagrant"
+          "vivaldi"
           "zen-browser"
         ];
         brews = [
