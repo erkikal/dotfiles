@@ -1,5 +1,5 @@
 {
-  description = "erkikal nix-darwin configuration";
+  description = "erkik nix-darwin configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -22,7 +22,7 @@
           pkgs.neovim
           pkgs.vim
           pkgs.vivid
-          pkgs.wezterm
+          #pkgs.wezterm
         ];
 
       homebrew = {
@@ -30,23 +30,23 @@
         casks = [
           "amethyst"
           # "arc"
-          "aws-vpn-client"
-          "chef-workstation"
+          # "aws-vpn-client"
+          # "chef-workstation"
           "font-terminess-ttf-nerd-font"
           "ghostty"
           "keepassxc"
-          "keymapp"
+          # "keymapp"
           "linearmouse"
-          "logitech-g-hub"
-          # "logitech-options"
+          "microsoft-edge"
           # "nikitabobko/tap/aerospace"
-          "obsidian"
-          "orbstack"
+          # "obsidian"
+          # "orbstack"
+          # "rancher"
           "raycast"
           # "tableplus"
-          "vagrant"
-          "vivaldi"
-          "zen-browser"
+          # "vagrant"
+          # "vivaldi"
+          # "zen-browser"
         ];
         brews = [
           "ansible"
@@ -69,7 +69,7 @@
           "git"
           "git-fixup"
           "git-interactive-rebase-tool"
-          "glab"
+          # "glab"
           "glib-networking"
           "gstreamer"
           "helm"
@@ -79,7 +79,7 @@
           "kubectx"
           "lazygit"
           "nmap"
-          "pngpaste"
+          # "pngpaste"
           "poetry"
           "poppler"
           "pure"
@@ -94,33 +94,32 @@
           "stern"
           "tldr"
           "unar"
+          # "vault"
           "wget"
           "xh"
           "yazi"
           "zellij"
           "zoxide"
-          "argoproj/tap/kubectl-argo-rollouts"
-          "azure/kubelogin/kubelogin"
+          # "argoproj/tap/kubectl-argo-rollouts"
+          # "azure/kubelogin/kubelogin"
           "danielfoehrkn/switch/switch"
-          "derailed/k9s/k9s"
+          # "derailed/k9s/k9s"
           "felixkratz/formulae/borders"
           "felixkratz/formulae/sketchybar"
-          "hashicorp/tap/terraform"
-          "jeffreywildman/virt-manager/virt-viewer"
-          "robscott/tap/kube-capacity"
+          # "hashicorp/tap/terraform"
+          # "jeffreywildman/virt-manager/virt-viewer"
+          # "robscott/tap/kube-capacity"
         ];
         taps = [
-          "argoproj/tap"
-          "azure/kubelogin"
+          # "argoproj/tap"
+          # "azure/kubelogin"
           "danielfoehrkn/switch"
-          "derailed/k9s"
+          # "derailed/k9s"
           "felixkratz/formulae"
-          "hashicorp/tap"
+          # "hashicorp/tap"
           "homebrew/bundle"
-          "homebrew/cask-fonts"
-          "homebrew/services"
-          "jeffreywildman/virt-manager"
-          "robscott/tap"
+          # "jeffreywildman/virt-manager"
+          # "robscott/tap"
         ];
         masApps = {
 
@@ -143,14 +142,14 @@
         enableSyntaxHighlighting = true;
       };
       system.configurationRevision = self.rev or self.dirtyRev or null;
-      system.stateVersion = 4;
+      system.stateVersion = 6;
       nixpkgs.hostPlatform = "aarch64-darwin";
       security.pam.services.sudo_local.touchIdAuth = true;
 
-      users.users.erkikal.home = "/Users/erkikal";
+      users.users.erkik.home = "/Users/erkik";
       home-manager.backupFileExtension = "backup";
       # nix.configureBuildUser = true;
-      ids.uids.nixbld = 300;
+      # ids.uids.nixbld = 350;
 
       system.activationScripts.applications.text = let
         env = pkgs.buildEnv {
@@ -186,22 +185,22 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#G26WDDXVW7
-    darwinConfigurations."G26WDDXVW7" = nix-darwin.lib.darwinSystem {
+    # $ darwin-rebuild build --flake .#erkik-mac
+    darwinConfigurations."erkik-mac" = nix-darwin.lib.darwinSystem {
       modules = [ 
           configuration
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.erkikal = import ./home.nix;
+            home-manager.users.erkik = import ./home.nix;
           }
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "erkikal";
+              user = "erkik";
 
               autoMigrate = true;
             };
@@ -210,6 +209,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."G26WDDXVW7".pkgs;
+    darwinPackages = self.darwinConfigurations."erkik-mac".pkgs;
   };
 }

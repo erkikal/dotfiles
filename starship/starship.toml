@@ -63,7 +63,7 @@ truncate_to_repo = false
 home_symbol = '󰋜 ~'
 read_only_style = '197'
 read_only = '  '
-format = 'at [$path]($style)[$read_only]($read_only_style) '
+format = ' at [$path]($style)[$read_only]($read_only_style) '
 
 # Shows current git branch
 [git_branch]
