@@ -1,7 +1,3 @@
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
 [submodule "neovim"]
 	path = neovim
 	url = https://github.com/erkikal/neovim.git
@@ -14,9 +10,3 @@
 [submodule "zsh/plugins/zsh-completions"]
 	path = zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "dotbot-nix-env"]
-	path = dotbot-nix-env
-	url = git@github.com:DanTheMinotaur/dotbot-nix-env.git
-[submodule "dotbot-brew"]
-	path = dotbot-brew
-	url = https://github.com/wren/dotbot-brew.git
