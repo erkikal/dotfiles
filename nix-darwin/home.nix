@@ -22,7 +22,6 @@
   };
     "starship".source = "${config.home.homeDirectory}/github/dotfiles/starship";
     "zellij".source = "${config.home.homeDirectory}/github/dotfiles/zellij";
-    "atuin".source = "${config.home.homeDirectory}/github/dotfiles/atuin";
     "bat".source = "${config.home.homeDirectory}/github/dotfiles/bat";
     "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
     "btop".source = "${config.home.homeDirectory}/github/dotfiles/btop";
@@ -103,7 +102,6 @@
 
 
       # Add app compatibilities
-      eval "$(atuin init zsh)"
       source <(carapace _carapace zsh)
 
       eval "$(starship init zsh)"
@@ -173,6 +171,15 @@
               _arguments '1: :_aws_profiles'
             }
           '';
+    };
+
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        secrets_filter = true;
+        enter_accept = true;
+      };
     };
         };
     };
