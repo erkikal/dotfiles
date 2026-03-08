@@ -39,7 +39,6 @@
     # "k9s".source = "${config.home.homeDirectory}/github/dotfiles/k9s";
     "raycast".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/raycast";
     "sketchybar".source = "${config.home.homeDirectory}/github/dotfiles/sketchybar";
-    "yazi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/yazi";
     # "tmux".source = "${config.home.homeDirectory}/github/dotfiles/tmux";
 
   };
@@ -91,12 +90,6 @@
       bindkey "^E" end-of-line
       bindkey "^[[3~" delete-char
 
-      # Yazi shell wrapper
-      function yy() {
-        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-        yazi "$@" --cwd-file="$tmp"
-        if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-          builtin cd -- "$cwd"
   programs = {
     home-manager.enable = true;
     zsh = {
@@ -212,5 +205,21 @@
         # Improve common commands
         mkdir = "mkdir -p";
       };
+
+    yazi = {
+      enable = true;
+      enableZshIntegration = true;
+      shellWrapperName = "yy";
+      settings = {
+        mgr = {
+          show_hidden = true;
+          sort_by = "natural";
+          sort_sensitive = false;
+          sort_dir_first = true;
+          show_symlink = true;
+        };
+        theme = "catppuccin-mocha";
+      };
+    };
   };
 }
