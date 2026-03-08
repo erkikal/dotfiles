@@ -20,7 +20,6 @@
   home.file = {
     ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
   };
-    "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
   xdg = {
     configFile = {
       # "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
@@ -610,6 +609,19 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
+    };
+  };
+
+  services = {
+    jankyborders = {
+      enable = true;
+      settings = {
+        style="round";
+        width=6.0;
+        hidpi="off";
+        active_color="0xffe2e2e3";
+        inactive_color="0x00000000";
+      };
     };
   };
 }
