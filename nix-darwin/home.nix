@@ -23,7 +23,6 @@
     "starship".source = "${config.home.homeDirectory}/github/dotfiles/starship";
     "zellij".source = "${config.home.homeDirectory}/github/dotfiles/zellij";
     "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
-    # "carapace".source = "${config.home.homeDirectory}/github/dotfiles/carapace";
     "fastfetch".source = "${config.home.homeDirectory}/github/dotfiles/fastfetch";
   xdg = {
     configFile = {
@@ -100,7 +99,6 @@
 
 
       # Add app compatibilities
-      source <(carapace _carapace zsh)
 
       eval "$(starship init zsh)"
     '';
@@ -313,6 +311,11 @@
           theme[process_end]="#cba6f7"
         '';
       };
+    };
+
+    carapace = {
+      enable = true;
+      enableZshIntegration = true;
     };
     gh.enable = true;
 
