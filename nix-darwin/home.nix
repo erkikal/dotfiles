@@ -433,6 +433,15 @@
     #     quick-terminal-animation-duration = 0;
     #   };
     # };
+
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 7d --keep 10";
+      };
+      flake = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
+    };
     
     starship = {
       enable = true;
