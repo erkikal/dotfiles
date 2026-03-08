@@ -103,7 +103,6 @@
 
 
       # Add app compatibilities
-      eval "$(gh completion -s zsh)"
       eval "$(atuin init zsh)"
       source <(carapace _carapace zsh)
 
@@ -200,6 +199,7 @@
         # Improve common commands
         mkdir = "mkdir -p";
       };
+    gh.enable = true;
 
     yazi = {
       enable = true;
