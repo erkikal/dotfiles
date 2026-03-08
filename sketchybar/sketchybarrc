@@ -150,19 +150,6 @@ sketchybar --add item net_logo right \
                      label.drawing=off \
                      background.color=0xffE0A3AD
 
-sketchybar --add item temp right \
-           --set temp update_freq=1 \
-                     script="~/.config/sketchybar/plugins/temp.sh" \
-                     icon.drawing=off \
-                     background.color=0xff3C3E4F \
-                     background.padding_left=0
-
-sketchybar --add item temp_logo right \
-           --set temp_logo icon=\
-                     icon.color=0xff121219\
-                     label.drawing=off \
-                     background.color=0xffF5E3B5
-
 sketchybar --add item pressure right \
            --set pressure update_freq=60 \
                      script="~/.config/sketchybar/plugins/pressure.sh" \
