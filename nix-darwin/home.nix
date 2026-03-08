@@ -96,68 +96,11 @@
         fi
         rm -f -- "$tmp"
       }
-
-      # mkdir and cd into it
-      mkcd ()
-      {
-        mkdir -p -- "$1" &&
-        cd -P -- "$1"
-      }
-
-      # Set AWS_PROFILE environment variable
-      function aws-profile() {
-        if [ -f $HOME/.aws/config ]; then
-          if [ -z "$1" ]; then
-            if [ -z "$AWS_PROFILE" ]; then
-              echo "No AWS profile is currently selected."
-            else
-              echo "Currently selected AWS profile is $AWS_PROFILE"
-            fi
-          else
-            local profiles=$(aws configure list-profiles)
-            local profile=$(echo "$profiles" | grep -w "$1")
-            if [[ -n $profile ]]; then
-              echo "Setting AWS_PROFILE to $1"
-              export AWS_PROFILE=$1
-            else
-              echo "Profile $1 not found in $HOME/.aws/config"
-            fi
-          fi
-        else
-          echo "404: $HOME/.aws/config not found."
         fi
-      }
 
-      # Autocomplete for aws-profile
-      if type aws-profile &>/dev/null; then
-        # Get AWS profiles for completion
-        function _aws_profiles() {
-          if [ -f $HOME/.aws/config ]; then
-            local -a profiles
-            profiles=($(aws configure list-profiles))
-            _describe 'aws profiles' profiles
-          fi
-        }
 
-        # Define completion for aws-profile
-        function _aws_profile() {
-          _arguments '1: :_aws_profiles'
-        }
 
-        # Register completion for aws-profile
-        compdef _aws_profile aws-profile
-      fi
 
-      # Get local network interfaces IP addresses
-      function ip-addr (){
-        for i in $(ifconfig -lu)
-        do
-          if ifconfig $i | grep -q "inet "
-          then
-            ifconfig $i
-          fi
-        done
-      }
 
       # Add app compatibilities
       eval "$(gh completion -s zsh)"
@@ -180,6 +123,59 @@
 
         # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
         repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
+      siteFunctions = 
+        {
+          # mkdir and cd into it
+          "mkcd" = ''
+            mkdir -p -- "$1" && cd -P -- "$1"
+          '';
+
+          # Set AWS_PROFILE environment variable
+          "aws-profile" = ''
+            aws-profile() {
+              compdef _aws_profile aws-profile
+
+              if [ -f $HOME/.aws/config ]; then
+                if [ -z "$1" ]; then
+                  if [ -z "$AWS_PROFILE" ]; then
+                    echo "No AWS profile is currently selected."
+                  else
+                    echo "Currently selected AWS profile is $AWS_PROFILE"
+                  fi
+                else
+                  local profiles=$(aws configure list-profiles)
+                  local profile=$(echo "$profiles" | grep -w "$1")
+                  if [[ -n $profile ]]; then
+                    echo "Setting AWS_PROFILE to $1"
+                    export AWS_PROFILE=$1
+                  else
+                    echo "Profile $1 not found in $HOME/.aws/config"
+                  fi
+                fi
+              else
+                echo "404: $HOME/.aws/config not found."
+              fi
+            }
+          '';
+
+          "_aws_profiles" = ''
+            _aws_profiles() {
+              if [ -f $HOME/.aws/config ]; then
+                local -a profiles
+                profiles=($(aws configure list-profiles))
+                _describe 'aws profiles' profiles
+              fi
+            }
+          '';
+
+          # Define completion for aws-profile
+          "_aws_profile" = ''
+            _aws_profile() {
+              _arguments '1: :_aws_profiles'
+            }
+          '';
+    };
+        };
     };
       };
     shellGlobalAliases =
