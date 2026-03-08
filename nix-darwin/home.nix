@@ -9,10 +9,10 @@
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
 # Makes sense for user specific applications that shouldn't be available system-wide
-  home.packages = [
-    pkgs.atuin
-    # pkgs.rancher
-    pkgs.vault
+  home.packages = with pkgs; [
+    atuin
+    # rancher
+    vault
   ];
 
   # Home Manager is pretty good at managing github/dotfiles. The primary way to manage
