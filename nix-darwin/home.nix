@@ -65,6 +65,7 @@
     "/run/current-system/sw/bin"
     "$HOME/.nix-profile/bin"
     "$HOME/.rd/bin"
+    "$HOME/.local/bin"
   ];
   programs.home-manager.enable = true;
   programs.zsh = {
