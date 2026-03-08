@@ -1,5 +1,5 @@
 # source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 
 [[ -f $(brew --prefix switch)/switch.sh ]]; INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
@@ -120,20 +120,24 @@ fi
 # End Nix
 
 # exports
-export XDG_CONFIG_HOME=~/.config
-export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-export ZSH_CACHE_DIR=~/github/.dotfiles/zsh/plugins/zsh-completions/src
-
-export EDITOR=nvim
-export VISUAL=nvim
-export LANG=en_US.UTF-8
-
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# export XDG_CONFIG_HOME=~/.config
+# export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+# export ZSH_CACHE_DIR=~/github/.dotfiles/zsh/plugins/zsh-completions/src
+#
+# export EDITOR=nvim
+# export VISUAL=nvim
+# export LANG=en_US.UTF-8
+#
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-export LS_COLORS=$(vivid generate catppuccin-mocha)
-
-# Set AWS_DEFAULT_REGION environment variable. This will set default region for all AWS CLI commands.
-export AWS_DEFAULT_REGION=eu-north-1
+# export LS_COLORS=$(vivid generate catppuccin-mocha)
+#
+# export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+#
+# # Set AWS_DEFAULT_REGION environment variable. This will set default region for all AWS CLI commands.
+# export AWS_DEFAULT_REGION=eu-north-1
+#
+# path=($HOME/.rd/bin $path)
 
 # sources
 eval "$(zoxide init zsh)"
