@@ -48,17 +48,17 @@
     AWS_DEFAULT_REGION = "eu-north-1";
     XDG_CONFIG_HOME = "$HOME/.config";
 
-    STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml";
-    ZSH_CACHE_DIR = "$HOME/github/dotfiles/zsh/plugins/zsh-completions/src";
-
     EDITOR = "nvim";
     VISUAL = "nvim";
     LANG = "en_US.UTF-8";
 
-    CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense"; # optional
     LS_COLORS = "$(vivid generate catppuccin-mocha)";
 
     OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
+
+    ZELLIJ_SESSION_NAME = "Main";
+
+    WORDCHARS = "*?.[]~=&;!#$%^(){}<>";
   };
 
   home.sessionPath = [
