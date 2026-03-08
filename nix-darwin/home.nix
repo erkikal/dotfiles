@@ -58,39 +58,46 @@
     "$HOME/.rd/bin"
     "$HOME/.local/bin"
   ];
-    enable = true;
-    initContent = ''
-      # Add any additional configurations here
-      export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
-      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-
-      [[ -f $(brew --prefix switch)/switch.sh ]]; INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
-
-      fastfetch -c examples/8
-
-      source ~/.zsh/git/git.plugin.zsh
-      source ~/.zsh/kubectl/kubectl.plugin.zsh
-
-      # keybinding
-      bindkey "^[[1;5D" backward-word
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[A" history-search-backward
-      bindkey "^[[B" history-search-forward
-      bindkey "^A" beginning-of-line
-      bindkey "^E" end-of-line
-      bindkey "^[[3~" delete-char
 
   programs = {
     home-manager.enable = true;
     zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      # historySubstringSearch.enable = true;
+      history = {
+        size = 10000;
+      };
+
+      initContent = ''
+        if [ -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
+          . "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
         fi
-        rm -f -- "$tmp"
-      }
+
+        [[ -f $(brew --prefix switch)/switch.sh ]]; INSTALLATION_PATH=$(brew --prefix switch) && source $INSTALLATION_PATH/switch.sh
+
+        fastfetch -c examples/8
+
+        source ~/.zsh/git/git.plugin.zsh
+        source ~/.zsh/kubectl/kubectl.plugin.zsh
+
         if [[ -z "$ZELLIJ" ]]; then
             zellij -l welcome
         fi
+
+        # keybinding
+        bindkey "^[[1;5D" backward-word
+        bindkey "^[[1;5C" forward-word
+        # bindkey "^[[A" history-search-backward
+        # bindkey "^[[B" history-search-forward
+        bindkey "^A" beginning-of-line
+        bindkey "^E" end-of-line
+        bindkey "^[[3~" delete-char
+        bindkey "^W" backward-kill-word
+        bindkey " " magic-space
+      '';
 
       shellAliases = 
         {
@@ -116,8 +123,6 @@
           ngc = "nh clean all --keep-since 7d --keep 10";
           ngcd = "nh clean all --dry --keep-since 7d --keep 10";
 
-    '';
-    autosuggestion.enable = true;
           l = "eza -lafF --color=auto --icons=auto";
           ll = "eza -laF --group-directories-first --color=auto";
           lt = "eza --tree --level=2 --long --icons --git";
