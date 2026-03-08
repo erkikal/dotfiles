@@ -67,8 +67,6 @@
     "$HOME/.rd/bin"
     "$HOME/.local/bin"
   ];
-  programs.home-manager.enable = true;
-  programs.zsh = {
     enable = true;
     initContent = ''
       # Add any additional configurations here
@@ -99,6 +97,9 @@
         yazi "$@" --cwd-file="$tmp"
         if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
           builtin cd -- "$cwd"
+  programs = {
+    home-manager.enable = true;
+    zsh = {
         fi
         rm -f -- "$tmp"
       }
@@ -187,6 +188,7 @@
 
         # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
         repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
+    };
       };
     shellGlobalAliases =
       {
