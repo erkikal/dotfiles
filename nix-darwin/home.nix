@@ -160,7 +160,6 @@
       }
 
       # Add app compatibilities
-      eval "$(zoxide init zsh)"
       eval "$(gh completion -s zsh)"
       eval "$(atuin init zsh)"
       source <(carapace _carapace zsh)
@@ -220,6 +219,11 @@
         };
         theme = "catppuccin-mocha";
       };
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 }
