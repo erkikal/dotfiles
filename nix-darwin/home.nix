@@ -18,9 +18,7 @@
   # Home Manager is pretty good at managing github/dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # ".zshrc".source = "${config.home.homeDirectory}/github/dotfiles/zshrc";
-    # ".aliases".source = "${config.home.homeDirectory}/github/dotfiles/aliases/aliases";
-    # ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
+    ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
   };
   xdg.configFile = {
     # "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
