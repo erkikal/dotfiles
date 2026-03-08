@@ -201,6 +201,45 @@
       };
     gh.enable = true;
 
+    # Uncomment on fresh setups and use Nix to install Ghostty
+    # ghostty = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   settings = {
+    #     macos-auto-secure-input = true;
+    #
+    #     clipboard-read = true;
+    #     clipboard-write = true;
+    #     theme = "Catppuccin Mocha";
+    #     background = "#1e1e2e";
+    #     foreground = "#cdd6f4";
+    #     selection-background = "#585b70";
+    #     selection-foreground = "#cdd6f4";
+    #     cursor-color = "#f5e0dc";
+    #
+    #     font-family = "Terminess Nerd Font";
+    #     font-size = 14;
+    #
+    #     macos-option-as-alt = true;
+    #     keybind = [
+    #       "global:cmd+s=toggle_quick_terminal"
+    #       "alt+left=unbind"
+    #       "alt+right=unbind"
+    #       "alt+two=text:@"
+    #       "alt+three=text:£"
+    #       "alt+four=text:$"
+    #       "alt+seven=text:{"
+    #       "alt+eight=text:["
+    #       "alt+nine=text:]"
+    #       "alt+zero=text:}"
+    #       "alt+ä=text:^"
+    #       "alt+plus=text:\\"
+    #       "alt+<=text:|"
+    #     ];
+    #
+    #     quick-terminal-animation-duration = 0;
+    #   };
+    # };
     yazi = {
       enable = true;
       enableZshIntegration = true;
