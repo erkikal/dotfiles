@@ -51,6 +51,8 @@ keybinds {
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
+        // Using https://github.com/datentyp/zellij-renumber-tabs for tab renumbering
+        bind "m" { Run "zellij-renumber-tabs"; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
         bind "x" { CloseTab; SwitchToMode "Normal"; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
