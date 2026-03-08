@@ -440,6 +440,7 @@
       enableZshIntegration = true;
     };
 
+    lazysql.enable = true;
 
     nh = {
       enable = true;
