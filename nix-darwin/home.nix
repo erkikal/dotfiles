@@ -434,6 +434,13 @@
     #   };
     # };
 
+
+    lazygit = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+
     nh = {
       enable = true;
       clean = {
