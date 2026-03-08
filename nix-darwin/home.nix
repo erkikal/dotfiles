@@ -21,7 +21,6 @@
     ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
   };
     "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
-    "fastfetch".source = "${config.home.homeDirectory}/github/dotfiles/fastfetch";
   xdg = {
     configFile = {
       # "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
@@ -315,6 +314,85 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    fastfetch = {
+      enable = true;
+      settings = {
+        display = {
+          separator = "   ";
+          constants = [
+            "─────────────────"
+          ];
+          key = {
+            type = "icon";
+            paddingLeft = 2;
+          };
+        };
+        modules = [
+          {
+            type = "custom";
+            format = "┌{$1} {#1}Hardware Information{#} {$1}┐";
+          }
+          "host"
+          "cpu"
+          "gpu"
+          "disk"
+          "memory"
+          "display"
+          "battery"
+          "poweradapter"
+          "bluetooth"
+          "sound"
+          {
+            type = "custom";
+            format = "├{$1} {#1}Software Information{#} {$1}┤";
+          }
+          {
+            type = "title";
+            keyIcon = "";
+            key = "Title";
+            format = "{user-name}@{host-name}";
+          }
+          "os"
+          "kernel"
+          "lm"
+          "de"
+          "wm"
+          "shell"
+          "terminal"
+          "terminalfont"
+          "theme"
+          "icons"
+          "wallpaper"
+          "packages"
+          "uptime"
+          "media"
+          {
+            type = "localip";
+            compact = true;
+          }
+          {
+            type = "publicip";
+            timeout = 1000;
+          }
+          {
+            type = "wifi";
+            format = "{ssid}";
+          }
+          "locale"
+          {
+            type = "custom";
+            format = "└{$1}──────────────────────{$1}┘";
+          }
+          {
+            type = "colors";
+            paddingLeft = 2;
+            symbol = "circle";
+          }
+        ];
+      };
+    };
+
     gh.enable = true;
 
     # Uncomment on fresh setups and use Nix to install Ghostty
