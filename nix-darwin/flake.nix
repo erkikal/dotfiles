@@ -39,7 +39,7 @@
           "linearmouse"
           "microsoft-edge"
           # "nikitabobko/tap/aerospace"
-          # "obsidian"
+          "obsidian"
           # "orbstack"
           # "rancher"
           "raycast"
@@ -55,6 +55,7 @@
           "bat"
           "btop"
           "direnv"
+          "doggo"
           "duf"
           "dust"
           "eza"
@@ -79,6 +80,8 @@
           "kubectx"
           "lazygit"
           "nmap"
+          "node"
+          "npm"
           # "pngpaste"
           "poetry"
           "poppler"
@@ -103,10 +106,11 @@
           # "argoproj/tap/kubectl-argo-rollouts"
           # "azure/kubelogin/kubelogin"
           "danielfoehrkn/switch/switch"
-          # "derailed/k9s/k9s"
+          "derailed/k9s/k9s"
           "felixkratz/formulae/borders"
           "felixkratz/formulae/sketchybar"
-          # "hashicorp/tap/terraform"
+          "hashicorp/tap/terraform"
+          "hashicorp/tap/terraform-ls"
           # "jeffreywildman/virt-manager/virt-viewer"
           # "robscott/tap/kube-capacity"
         ];
@@ -114,10 +118,10 @@
           # "argoproj/tap"
           # "azure/kubelogin"
           "danielfoehrkn/switch"
-          # "derailed/k9s"
+          "derailed/k9s"
           "felixkratz/formulae"
-          # "hashicorp/tap"
-          "homebrew/bundle"
+          "hashicorp/tap"
+          # "homebrew/bundle"
           # "jeffreywildman/virt-manager"
           # "robscott/tap"
         ];
@@ -171,12 +175,14 @@
           done
         '';
 
+      system.primaryUser = "erkik";
       system.defaults = {
         dock.autohide = true;
         dock.mru-spaces = false;
         NSGlobalDomain._HIHideMenuBar = true;
         finder.AppleShowAllExtensions = true;
         screencapture.location = "~/Pictures/Screenshots";
+        # screencapture.target = "clipboard";
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
         NSGlobalDomain.KeyRepeat = 2;
@@ -185,8 +191,8 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#erkik-mac
-    darwinConfigurations."erkik-mac" = nix-darwin.lib.darwinSystem {
+    # $ darwin-rebuild build --flake .#erkik-mac-2
+    darwinConfigurations."erkik-mac-2" = nix-darwin.lib.darwinSystem {
       modules = [ 
           configuration
           home-manager.darwinModules.home-manager
@@ -209,6 +215,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."erkik-mac".pkgs;
+    darwinPackages = self.darwinConfigurations."erkik-mac-2".pkgs;
   };
 }
