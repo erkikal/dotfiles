@@ -20,7 +20,6 @@
   home.file = {
     ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
   };
-    "zellij".source = "${config.home.homeDirectory}/github/dotfiles/zellij";
     "borders".source = "${config.home.homeDirectory}/github/dotfiles/borders";
     "fastfetch".source = "${config.home.homeDirectory}/github/dotfiles/fastfetch";
   xdg = {
@@ -91,6 +90,8 @@
         fi
         rm -f -- "$tmp"
       }
+        if [[ -z "$ZELLIJ" ]]; then
+            zellij -l welcome
         fi
 
 
@@ -506,6 +507,25 @@
           show_symlink = true;
         };
         theme = "catppuccin-mocha";
+      };
+    };
+
+    zellij = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        keybinds = {
+          "tab" = {
+            # Using https://github.com/datentyp/zellij-renumber-tabs to renumber tabs
+            "bind \"m\"" = { Run = "zellij-renumber-tabs"; };
+            "bind \"Ctrl Shift Left\" \"Ctrl Shift h\"" = { MoveTab = "Left"; };
+            "bind \"Ctrl Shift Right\" \"Ctrl Shift l\"" = { MoveTab = "Right"; };
+          };
+        };
+        theme = "catppuccin-mocha";
+        simplified_ui = true;
+        pane_frames = false;
+        serialize_pane_viewport = true;
       };
     };
 
