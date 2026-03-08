@@ -22,14 +22,29 @@
     configuration = { pkgs, config, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
+      environment.systemPackages = with pkgs;
         [ 
-          pkgs.carapace
-          pkgs.mkalias
-          pkgs.neovim
-          pkgs.vim
-          pkgs.vivid
-          #pkgs.wezterm
+          bat
+          btop
+          carapace
+          fastfetch
+          gh
+          # ghostty
+          jankyborders
+          k9s
+          lazygit
+          lazysql
+          mkalias
+          neovim
+          nh
+          nvd
+          starship
+          vim
+          vivid
+          #wezterm
+          yazi
+          zellij
+          zoxide
         ];
 
       homebrew = {
