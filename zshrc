@@ -16,7 +16,7 @@ fastfetch -c examples/8
 setopt hist_ignore_space
 
 # aliases
-source ~/.aliases 
+# source ~/.aliases 
 source ~/.zsh/git/git.plugin.zsh
 source ~/.zsh/kubectl/kubectl.plugin.zsh
 
@@ -41,7 +41,7 @@ bindkey "^[[3~" delete-char
 #    command sudo "$@"
 #}
 
-# get local network interfaces IP addresses
+# Get local network interfaces IP addresses
 function ip-addr (){
   for i in $(ifconfig -lu)
   do
