@@ -20,13 +20,6 @@
   home.file = {
     ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
   };
-  xdg.configFile = {
-    # "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
-    "ghostty".source = "${config.home.homeDirectory}/github/dotfiles/ghostty";
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/neovim/erki-kickstart";
-    "nix".source = "${config.home.homeDirectory}/github/dotfiles/nix";
-    "nix-darwin".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
-    "home-manager/home.nix".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin/home.nix";
     "starship".source = "${config.home.homeDirectory}/github/dotfiles/starship";
     "zellij".source = "${config.home.homeDirectory}/github/dotfiles/zellij";
     "atuin".source = "${config.home.homeDirectory}/github/dotfiles/atuin";
@@ -35,12 +28,19 @@
     "btop".source = "${config.home.homeDirectory}/github/dotfiles/btop";
     # "carapace".source = "${config.home.homeDirectory}/github/dotfiles/carapace";
     "fastfetch".source = "${config.home.homeDirectory}/github/dotfiles/fastfetch";
-    "kanata".source = "${config.home.homeDirectory}/github/dotfiles/kanata";
-    # "k9s".source = "${config.home.homeDirectory}/github/dotfiles/k9s";
-    "raycast".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/raycast";
-    "sketchybar".source = "${config.home.homeDirectory}/github/dotfiles/sketchybar";
-    # "tmux".source = "${config.home.homeDirectory}/github/dotfiles/tmux";
-
+  xdg = {
+    configFile = {
+      # "wezterm".source = "${config.home.homeDirectory}/github/dotfiles/wezterm";
+      "ghostty".source = "${config.home.homeDirectory}/github/dotfiles/ghostty";
+      "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/neovim/erki-kickstart";
+      "nix".source = "${config.home.homeDirectory}/github/dotfiles/nix";
+      "nix-darwin".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
+      "home-manager/home.nix".source = "${config.home.homeDirectory}/github/dotfiles/nix-darwin/home.nix";
+      "kanata".source = "${config.home.homeDirectory}/github/dotfiles/kanata";
+      "k9s/skins".source = "${config.home.homeDirectory}/github/dotfiles/k9s/skins";
+      "raycast".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/github/dotfiles/raycast";
+      "sketchybar".source = "${config.home.homeDirectory}/github/dotfiles/sketchybar";
+    };
   };
 
   home.sessionVariables = {
