@@ -636,6 +636,14 @@
         };
         theme = "catppuccin-mocha";
       };
+      keymap = {
+        input.prepend_keymap = [
+          { run  = "plugin smart-enter"; on = "l"; desc = "Enter the child directory, or open the file"; }
+        ];
+      };
+      plugins = {
+        "smart-enter" = pkgs.yaziPlugins.smart-enter;
+      };
     };
 
     zellij = {
