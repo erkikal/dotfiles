@@ -149,25 +149,6 @@
         mkdir = "mkdir -p";
       };
 
-      siteFunctions = 
-        {
-          # mkdir and cd into it
-          "mkcd" = ''
-            mkdir -p -- "$1" && cd -P -- "$1"
-          '';
-
-          # Set AWS_PROFILE environment variable
-          "aws-profile" = ''
-            aws-profile() {
-              compdef _aws_profile aws-profile
-
-              if [ -f $HOME/.aws/config ]; then
-                if [ -z "$1" ]; then
-                  if [ -z "$AWS_PROFILE" ]; then
-                    echo "No AWS profile is currently selected."
-                  else
-                    echo "Currently selected AWS profile is $AWS_PROFILE"
-                  fi
       shellGlobalAliases = {
         NE = "2>/dev/null";
         NO = ">/dev/null";
@@ -175,38 +156,58 @@
 
         C = "| pbcopy";
       };
+
+      siteFunctions = {
+        # mkdir and cd into it
+        "mkcd" = ''
+          mkdir -p -- "$1" && cd -P -- "$1"
+        '';
+
+        # Set AWS_PROFILE environment variable
+        "aws-profile" = ''
+          aws-profile() {
+            compdef _aws_profile aws-profile
+
+            if [ -f $HOME/.aws/config ]; then
+              if [ -z "$1" ]; then
+                if [ -z "$AWS_PROFILE" ]; then
+                  echo "No AWS profile is currently selected."
                 else
-                  local profiles=$(aws configure list-profiles)
-                  local profile=$(echo "$profiles" | grep -w "$1")
-                  if [[ -n $profile ]]; then
-                    echo "Setting AWS_PROFILE to $1"
-                    export AWS_PROFILE=$1
-                  else
-                    echo "Profile $1 not found in $HOME/.aws/config"
-                  fi
+                  echo "Currently selected AWS profile is $AWS_PROFILE"
                 fi
               else
-                echo "404: $HOME/.aws/config not found."
+                local profiles=$(aws configure list-profiles)
+                local profile=$(echo "$profiles" | grep -w "$1")
+                if [[ -n $profile ]]; then
+                  echo "Setting AWS_PROFILE to $1"
+                  export AWS_PROFILE=$1
+                else
+                  echo "Profile $1 not found in $HOME/.aws/config"
+                fi
               fi
-            }
-          '';
+            else
+              echo "404: $HOME/.aws/config not found."
+            fi
+          }
+        '';
 
-          "_aws_profiles" = ''
-            _aws_profiles() {
-              if [ -f $HOME/.aws/config ]; then
-                local -a profiles
-                profiles=($(aws configure list-profiles))
-                _describe 'aws profiles' profiles
-              fi
-            }
-          '';
+        "_aws_profiles" = ''
+          _aws_profiles() {
+            if [ -f $HOME/.aws/config ]; then
+              local -a profiles
+              profiles=($(aws configure list-profiles))
+              _describe 'aws profiles' profiles
+            fi
+          }
+        '';
 
-          # Define completion for aws-profile
-          "_aws_profile" = ''
-            _aws_profile() {
-              _arguments '1: :_aws_profiles'
-            }
-          '';
+        # Define completion for aws-profile
+        "_aws_profile" = ''
+          _aws_profile() {
+            _arguments '1: :_aws_profiles'
+          }
+        '';
+      };
     };
 
     atuin = {
