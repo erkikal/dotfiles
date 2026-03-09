@@ -4,21 +4,45 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "erkik";
-  home.homeDirectory = "/Users/erkik";
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home = {
+    username = "erkik";
+    homeDirectory = "/Users/erkik";
+    stateVersion = "25.05"; # Please read the comment before changing.
 
-# Makes sense for user specific applications that shouldn't be available system-wide
-  home.packages = with pkgs; [
-    atuin
-    # rancher
-    vault
-  ];
+    # Makes sense for user specific applications that shouldn't be available system-wide
+    packages = with pkgs; [
+      atuin
+      # rancher
+      vault
+    ];
 
-  # Home Manager is pretty good at managing github/dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
+    sessionVariables = {
+      AWS_DEFAULT_REGION = "eu-north-1";
+      XDG_CONFIG_HOME = "$HOME/.config";
+
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      LANG = "en_US.UTF-8";
+
+      LS_COLORS = "$(vivid generate catppuccin-mocha)";
+
+      OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
+
+      ZELLIJ_SESSION_NAME = "Main";
+
+      WORDCHARS = "*?.[]~=&;!#$%^(){}<>";
+    };
+
+    sessionPath = [
+      "/run/current-system/sw/bin"
+      "$HOME/.nix-profile/bin"
+      "$HOME/.rd/bin"
+      "$HOME/.local/bin"
+    ];
+
+    file = {
+      ".zsh".source = "${config.home.homeDirectory}/github/dotfiles/zsh";
+    };
   };
   xdg = {
     configFile = {
@@ -34,30 +58,6 @@
       "sketchybar".source = "${config.home.homeDirectory}/github/dotfiles/sketchybar";
     };
   };
-
-  home.sessionVariables = {
-    AWS_DEFAULT_REGION = "eu-north-1";
-    XDG_CONFIG_HOME = "$HOME/.config";
-
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    LANG = "en_US.UTF-8";
-
-    LS_COLORS = "$(vivid generate catppuccin-mocha)";
-
-    OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
-
-    ZELLIJ_SESSION_NAME = "Main";
-
-    WORDCHARS = "*?.[]~=&;!#$%^(){}<>";
-  };
-
-  home.sessionPath = [
-    "/run/current-system/sw/bin"
-    "$HOME/.nix-profile/bin"
-    "$HOME/.rd/bin"
-    "$HOME/.local/bin"
-  ];
 
   programs = {
     home-manager.enable = true;
