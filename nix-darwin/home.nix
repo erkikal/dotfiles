@@ -99,64 +99,56 @@
         bindkey " " magic-space
       '';
 
-      shellAliases = 
-        {
-          reload = "source ~/.zshrc";
-          hist = "history 1 | less";
-          ".." = "cd ..";
-          "..." = "cd ../..";
-          "...." = "cd ../../..";
-          "....." = "cd ../../../..";
-          "......" = "cd ../../../../..";
-          ybssh = "ssh-add -s /usr/local/lib/libykcs11.dylib";
+      shellAliases = {
+        reload = "source ~/.zshrc";
+        hist = "history 1 | less";
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
+        "....." = "cd ../../../..";
+        "......" = "cd ../../../../..";
+        ybssh = "ssh-add -s /usr/local/lib/libykcs11.dylib";
 
 
-          # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
-          repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
+        # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
+        repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
 
-          # Nix commands
-          nos = "nh darwin switch --impure --dry";
-          nosa = "nh darwin switch --impure";
-          ndiff = "nvd diff /run/current-system/nix/var/nix/profiles/system";
+        # Nix commands
+        nos = "nh darwin switch --impure --dry";
+        nosa = "nh darwin switch --impure";
+        ndiff = "nvd diff /run/current-system/nix/var/nix/profiles/system";
 
-          nhs = "nh home switch --impure";
-          ngc = "nh clean all --keep-since 7d --keep 10";
-          ngcd = "nh clean all --dry --keep-since 7d --keep 10";
+        nhs = "nh home switch --impure";
+        ngc = "nh clean all --keep-since 7d --keep 10";
+        ngcd = "nh clean all --dry --keep-since 7d --keep 10";
 
-          l = "eza -lafF --color=auto --icons=auto";
-          ll = "eza -laF --group-directories-first --color=auto";
-          lt = "eza --tree --level=2 --long --icons --git";
+        l = "eza -lafF --color=auto --icons=auto";
+        ll = "eza -laF --group-directories-first --color=auto";
+        lt = "eza --tree --level=2 --long --icons --git";
 
-          v = "nvim";
-          vim = "nvim";
-          sv = "sudo nvim";
+        v = "nvim";
+        vim = "nvim";
+        sv = "sudo nvim";
 
-          cat = "bat";
-          lg = "lazygit";
-          cd = "z";
+        cat = "bat";
+        lg = "lazygit";
+        cd = "z";
 
-          cls = "clear && fastfetch -c examples/8";
+        cls = "clear && fastfetch -c examples/8";
 
-          # confirm before overwriting something
-          cp = "cp -i";
-          mv = "mv -i";
-          rm = "rm -i";
+        # confirm before overwriting something
+        cp = "cp -i";
+        mv = "mv -i";
+        rm = "rm -i";
 
-          # easier to read disk
-          df = "df -h";     # human-readable sizes
-          free = "free -m"; # show sizes in MB
+        # easier to read disk
+        df = "df -h";     # human-readable sizes
+        free = "free -m"; # show sizes in MB
 
-          # Improve common commands
-          mkdir = "mkdir -p";
-        };
-      shellGlobalAliases =
-        {
-          NE = "2>/dev/null";
-          NO = ">/dev/null";
-          NUL = ">/dev/null 2>&1";
+        # Improve common commands
+        mkdir = "mkdir -p";
+      };
 
-          C = "| pbcopy";
-        };
       siteFunctions = 
         {
           # mkdir and cd into it
@@ -176,6 +168,13 @@
                   else
                     echo "Currently selected AWS profile is $AWS_PROFILE"
                   fi
+      shellGlobalAliases = {
+        NE = "2>/dev/null";
+        NO = ">/dev/null";
+        NUL = ">/dev/null 2>&1";
+
+        C = "| pbcopy";
+      };
                 else
                   local profiles=$(aws configure list-profiles)
                   local profile=$(echo "$profiles" | grep -w "$1")
