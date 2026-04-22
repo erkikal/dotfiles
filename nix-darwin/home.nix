@@ -59,6 +59,11 @@
     };
   };
 
+  imports = [
+    ~/github/dotfiles/nix-darwin/modules/git/git.nix
+    # ./modules/git/git.nix
+  ];
+
   programs = {
     home-manager.enable = true;
     zsh = {
@@ -416,8 +421,6 @@
       };
     };
 
-    gh.enable = true;
-
     # Uncomment on fresh setups and use Nix to install Ghostty
     # ghostty = {
     #   enable = true;
@@ -469,10 +472,10 @@
       };
     };
 
-    lazygit = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    # lazygit = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
 
     lazysql.enable = true;
 
@@ -484,7 +487,7 @@
       };
       flake = "${config.home.homeDirectory}/github/dotfiles/nix-darwin";
     };
-    
+
     starship = {
       enable = true;
       enableZshIntegration = true;

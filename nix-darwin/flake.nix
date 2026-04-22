@@ -28,11 +28,12 @@
           btop
           carapace
           fastfetch
-          gh
+          # gh
+          # git
           # ghostty
           jankyborders
           k9s
-          lazygit
+          # lazygit
           lazysql
           mkalias
           neovim
@@ -90,7 +91,7 @@
           "ffmpegthumbnailer"
           "fzf"
           # "gh"
-          "git"
+          # "git"
           "git-fixup"
           "git-interactive-rebase-tool"
           # "glab"
