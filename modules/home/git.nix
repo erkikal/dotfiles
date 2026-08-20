@@ -1,6 +1,7 @@
-{ config, lig, pkgs,... }:
+# Git: dual (personal/work) identity, SSH signing, gh and lazygit.
+{ config, pkgs, ... }:
 let
-  gitIdentity = pkgs.writeShellScriptBin "git-identity" (builtins.readFile ~/github/dotfiles/nix-darwin/modules/git/git-identity);
+  gitIdentity = pkgs.writeShellScriptBin "git-identity" (builtins.readFile ./git-identity);
 in {
   home.packages = with pkgs; [
     gh
@@ -8,6 +9,7 @@ in {
     gitIdentity
     lazygit
   ];
+
   home.activation.createAllowedSigners = config.lib.dag.entryAfter [ "writeBoundary" ] ''
     if [[ -f "${config.home.homeDirectory}/.ssh/erki.personal.pub" && -f "${config.home.homeDirectory}/.ssh/publickey.pub" ]]; then
       $DRY_RUN_CMD rm -f ${config.home.homeDirectory}/.ssh/allowed_signers
@@ -47,7 +49,7 @@ in {
         gpg = {
           ssh.allowedSignersFile = "~/.ssh/allowed_signers";
         };
-        
+
       };
       signing = {
         format = "ssh";
