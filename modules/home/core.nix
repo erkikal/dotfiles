@@ -1,5 +1,5 @@
 # Base home-manager settings: identity, packages, environment, nh.
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home = {
@@ -40,11 +40,23 @@
 
     nh = {
       enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 7d --keep 10";
-      };
+      clean.enable = true;
       flake = "${config.home.homeDirectory}/github/dotfiles";
     };
   };
+
+  # The nh module hands `clean.extraArgs` to launchd as a single argv element,
+  # so "--keep-since 7d --keep 10" arrived as one string and nh aborted with
+  # `unexpected argument` on every scheduled run. Pass the flags as separate
+  # arguments instead, and leave extraArgs unset so there is one source of
+  # truth. (Linux is unaffected: systemd word-splits its ExecStart string.)
+  launchd.agents.nh-clean.config.ProgramArguments = lib.mkForce [
+    (lib.getExe config.programs.nh.package)
+    "clean"
+    "user"
+    "--keep-since"
+    "7d"
+    "--keep"
+    "10"
+  ];
 }
