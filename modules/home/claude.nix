@@ -31,8 +31,8 @@
   };
 
   programs.zsh.initContent = lib.mkAfter ''
-    if [ -r "${config.sops.secrets.claude_token.path}" ]; then
-      export ANTHROPIC_AUTH_TOKEN="$(cat ${config.sops.secrets.claude_token.path})"
+    if [ -r "${config.sops.secrets.claude_demo_token.path}" ]; then
+      export ANTHROPIC_AUTH_TOKEN="$(cat ${config.sops.secrets.claude_demo_token.path})"
     fi
   '';
 }
