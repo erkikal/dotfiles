@@ -14,7 +14,7 @@
 
     # home-manager secrets are always owned by the user, so there is no `owner`
     # option here (unlike the system-level sops module).
-    secrets.claude_token = {
+    secrets.claude_demo_token = {
       sopsFile = ../../secrets/claude.yaml;
     };
   };
