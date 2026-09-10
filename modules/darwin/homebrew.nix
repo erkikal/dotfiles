@@ -11,6 +11,7 @@
       "ghostty"
       "keepassxc"
       "linearmouse"
+      "microsoft-edge"
       "obsidian"
       "raycast"
     ];
