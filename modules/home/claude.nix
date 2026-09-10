@@ -21,6 +21,13 @@
       model = "haiku";
       statusline.enable = true;
     };
+
+    # Herdr's own skill, which teaches Claude to drive the `herdr` CLI from
+    # inside a pane (split panes, start/prompt other agents, read output).
+    # nixpkgs' herdr package installs upstream's SKILL.md into
+    # share/herdr/skills/herdr, so the skill tracks the installed binary
+    # instead of being vendored here.
+    skills.herdr = "${config.programs.herdr.package}/share/herdr/skills/herdr";
   };
 
   programs.zsh.initContent = lib.mkAfter ''
