@@ -11,7 +11,6 @@
       "ghostty"
       "keepassxc"
       "linearmouse"
-      "obsidian"
       "raycast"
     ];
     brews = [
