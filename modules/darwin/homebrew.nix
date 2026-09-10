@@ -62,7 +62,6 @@
       "derailed/k9s/k9s"
       "felixkratz/formulae/borders"
       "felixkratz/formulae/sketchybar"
-      "gtab"
       "hashicorp/tap/terraform"
       "hashicorp/tap/terraform-ls"
     ];
@@ -77,10 +76,6 @@
       }
       {
         name = "felixkratz/formulae";
-        trusted = true;
-      }
-      {
-        name = "Franvy/gtab";
         trusted = true;
       }
       {
