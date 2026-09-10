@@ -1,0 +1,7 @@
+keys:
+  - &primary age1n0mfq45lsvcmdz7jnewlhqhv7j0hmfexsz8ud9mar8m7sw7lmehqy9j4lz
+creation_rules:
+  - path_regex: secrets/claude.yaml$
+    key_groups:
+    - age:
+      - *primary
