@@ -57,11 +57,10 @@
       repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
 
       # Nix commands
-      nos = "nh darwin switch --impure --dry";
-      nosa = "nh darwin switch --impure";
+      nos = "nh darwin switch --dry";
+      nosa = "nh darwin switch";
       ndiff = "nvd diff /run/current-system/nix/var/nix/profiles/system";
 
-      nhs = "nh home switch --impure";
       ngc = "nh clean all --keep-since 7d --keep 10";
       ngcd = "nh clean all --dry --keep-since 7d --keep 10";
 
