@@ -18,7 +18,7 @@
 
     theme = lib.recursiveUpdate
       (builtins.fromTOML (
-        builtins.readFile "${catppuccin.yazi}/themes/mocha/catppuccin-mocha-mauve.toml"
+        builtins.readFile "${catppuccin.yazi}/themes/mocha/catppuccin-mocha-sapphire.toml"
       ))
       {
         mgr.syntect_theme = "${catppuccin.bat}/themes/Catppuccin Mocha.tmTheme";
