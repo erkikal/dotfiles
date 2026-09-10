@@ -24,8 +24,6 @@
       source ~/.zsh/git/git.plugin.zsh
       source ~/.zsh/kubectl/kubectl.plugin.zsh
 
-      eval "$(summon completions zsh)"
-
       # keybinding
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
