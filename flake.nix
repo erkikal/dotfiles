@@ -13,10 +13,9 @@
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     sops-nix.url = "github:Mic92/sops-nix";
-    herdr.url = "github:herdrdev/herdr/v0.7.5";
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-homebrew, sops-nix, herdr }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-homebrew, sops-nix }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#erkik-mac-2
