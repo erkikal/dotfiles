@@ -5,7 +5,7 @@
 # secret would leak it. Instead we export ANTHROPIC_AUTH_TOKEN at shell start
 # from the sops-decrypted file (mode 0400, user-only). This also means the
 # config evaluates/builds fine when the secret is not yet present.
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.claude-code = {
@@ -20,6 +20,24 @@
       effortLevel = "medium";
       model = "haiku";
       statusline.enable = true;
+
+      # Registers herdr's Claude integration, which reports native session
+      # references so herdr can restore sessions on relaunch. `herdr
+      # integration install claude` normally writes this itself, but it cannot:
+      # home-manager owns settings.json as a read-only store symlink. Shape and
+      # timeout mirror herdr's own canonical hook value.
+      hooks.SessionStart = [
+        {
+          matcher = "*";
+          hooks = [
+            {
+              type = "command";
+              command = "bash '${config.programs.claude-code.configDir}/hooks/herdr-agent-state.sh' session";
+              timeout = 10;
+            }
+          ];
+        }
+      ];
     };
 
     # Herdr's own skill, which teaches Claude to drive the `herdr` CLI from
@@ -28,6 +46,12 @@
     # share/herdr/skills/herdr, so the skill tracks the installed binary
     # instead of being vendored here.
     skills.herdr = "${config.programs.herdr.package}/share/herdr/skills/herdr";
+
+    # The integration's hook script, taken from the same herdr revision as the
+    # binary so its version marker stays in step with what herdr expects. Do
+    # not run `herdr integration install claude` on top of this.
+    hooks."herdr-agent-state.sh" =
+      "${pkgs.herdr.src}/src/integration/assets/claude/herdr-agent-state.sh";
   };
 
   programs.zsh.initContent = lib.mkAfter ''
