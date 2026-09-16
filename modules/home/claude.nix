@@ -1,10 +1,13 @@
-# Claude Code CLI — routed through the internal LiteLLM gateway.
+# Claude Code CLI — routed through an internal LiteLLM gateway whose endpoint
+# and token both come from sops.
 #
-# The auth token is NOT baked into settings.json: that file is generated into
-# the world-readable Nix store (mode 444), so a `builtins.readFile` of the
-# secret would leak it. Instead we export ANTHROPIC_AUTH_TOKEN at shell start
-# from the sops-decrypted file (mode 0400, user-only). This also means the
-# config evaluates/builds fine when the secret is not yet present.
+# Neither value is baked into settings.json: that file is generated into the
+# world-readable Nix store (mode 444), so a `builtins.readFile` of either would
+# publish it — the token obviously, and the gateway's hostname because it names
+# internal infrastructure. Instead we export ANTHROPIC_BASE_URL and
+# ANTHROPIC_AUTH_TOKEN at shell start from the sops-decrypted files (mode 0400,
+# user-only). This also means the config evaluates/builds fine when the secrets
+# are not yet present.
 { config, lib, pkgs, ... }:
 
 {
@@ -12,7 +15,6 @@
     enable = true;
     settings = {
       env = {
-        ANTHROPIC_BASE_URL = "https://litellm.demo.riaint.ee";
         ANTHROPIC_DEFAULT_SONNET_MODEL = "claude-sonnet-5";
         ANTHROPIC_DEFAULT_HAIKU_MODEL = "claude-haiku-4-5";
         ANTHROPIC_DEFAULT_OPUS_MODEL = "claude-opus-5";
@@ -58,8 +60,11 @@
   };
 
   programs.zsh.initContent = lib.mkAfter ''
-    if [ -r "${config.sops.secrets.claude_demo_token.path}" ]; then
-      export ANTHROPIC_AUTH_TOKEN="$(cat ${config.sops.secrets.claude_demo_token.path})"
+    if [ -r "${config.sops.secrets.claude_prod_url.path}" ]; then
+      export ANTHROPIC_BASE_URL="$(cat ${config.sops.secrets.claude_prod_url.path})"
+    fi
+    if [ -r "${config.sops.secrets.claude_prod_token.path}" ]; then
+      export ANTHROPIC_AUTH_TOKEN="$(cat ${config.sops.secrets.claude_prod_token.path})"
     fi
   '';
 }
