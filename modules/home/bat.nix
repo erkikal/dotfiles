@@ -8,6 +8,9 @@
     enable = true;
     config = {
       theme = "catppuccin";
+      map-syntax = [
+        "*.jenkinsfile:Groovy"
+      ];
     };
     themes = {
       catppuccin = {
