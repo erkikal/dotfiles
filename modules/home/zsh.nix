@@ -73,7 +73,6 @@
       sv = "sudo nvim";
 
       cat = "bat";
-      cd = "z";
 
       cls = "clear && fastfetch -c examples/8";
 
