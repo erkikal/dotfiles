@@ -47,10 +47,12 @@
 
     # Herdr's own skill, which teaches Claude to drive the `herdr` CLI from
     # inside a pane (split panes, start/prompt other agents, read output).
-    # nixpkgs' herdr package installs upstream's SKILL.md into
-    # share/herdr/skills/herdr, so the skill tracks the installed binary
-    # instead of being vendored here.
-    skills.herdr = "${config.programs.herdr.package}/share/herdr/skills/herdr";
+    # nixpkgs' herdr package installs upstream's skills/ tree under
+    # share/skills, so the skill tracks the installed binary instead of being
+    # vendored here. The doubled path segment is upstream's own layout:
+    # share/skills is the tree root and share/skills/herdr/herdr is the skill
+    # directory holding SKILL.md, which is the level home-manager must link.
+    skills.herdr = "${config.programs.herdr.package}/share/skills/herdr/herdr";
 
     # The integration's hook script, taken from the same herdr revision as the
     # binary so its version marker stays in step with what herdr expects. Do
