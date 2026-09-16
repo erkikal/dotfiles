@@ -73,7 +73,6 @@
       sv = "sudo nvim";
 
       cat = "bat";
-      lg = "lazygit";
       cd = "z";
 
       cls = "clear && fastfetch -c examples/8";
