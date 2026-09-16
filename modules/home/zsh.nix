@@ -50,7 +50,7 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       "......" = "cd ../../../../..";
-      ybssh = "ssh-add -s /usr/local/lib/libykcs11.dylib";
+      ybssh = "ssh-add -s /usr/local/lib/opensc-pkcs11.so";
 
 
       # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
