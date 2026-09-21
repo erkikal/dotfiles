@@ -57,7 +57,6 @@
       "wget"
       "xh"
       "danielfoehrkn/switch/switch"
-      "derailed/k9s/k9s"
       "felixkratz/formulae/borders"
       "felixkratz/formulae/sketchybar"
       "hashicorp/tap/terraform"
@@ -66,10 +65,6 @@
     taps = [
       {
         name = "danielfoehrkn/switch";
-        trusted = true;
-      }
-      {
-        name = "derailed/k9s";
         trusted = true;
       }
       {

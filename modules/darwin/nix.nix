@@ -11,7 +11,6 @@
     carapace
     fastfetch
     jankyborders
-    k9s
     lazysql
     mkalias
     neovim
