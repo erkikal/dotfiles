@@ -14,6 +14,7 @@
     ./carapace.nix
     ./k9s.nix
     ./lazysql.nix
+    ./sofka.nix
     ./yazi.nix
     ./zoxide.nix
     ./btop.nix
