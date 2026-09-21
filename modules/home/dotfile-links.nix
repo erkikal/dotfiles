@@ -19,7 +19,6 @@ in
     "nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/neovim/erki-kickstart";
     "nix".source = ../../nix;
     "kanata".source = ../../kanata;
-    # k9s skins are managed by programs.k9s (see k9s.nix).
     "raycast".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/raycast";
     "sketchybar".source = ../../sketchybar;
   };

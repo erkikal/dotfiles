@@ -30,9 +30,6 @@ in
     yazi = fetch "yazi" "d62802be39210ea10e54b3e3b09735c6cb9e57c1"
       "sha256-bwzEO8exoBwa19q+jnYjHkaamGl2mhfukIEhDfUCRGI=";
 
-    k9s = fetch "k9s" "fdbec82284744a1fc2eb3e2d24cb92ef87ffb8b4"
-      "sha256-9h+jyEO4w0OnzeEKQXJbg9dvvWGZYQAO4MbgDn6QRzM=";
-
     starship = fetch "starship" "5906cc369dd8207e063c0e6e2d27bd0c0b567cb8"
       "sha256-FLHjbClpTqaK4n2qmepCPkb8rocaAo3qeV4Zp1hia0g=";
   };
