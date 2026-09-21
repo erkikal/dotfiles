@@ -24,7 +24,10 @@
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs; };
     users.erkik = import ../../modules/home;
-    sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+    sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.sofka.homeManagerModules.sofka
+    ];
   };
 
   nix-homebrew = {
