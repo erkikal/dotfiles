@@ -13,7 +13,6 @@
     jankyborders
     lazysql
     mkalias
-    neovim
     nh
     nvd
     sops
