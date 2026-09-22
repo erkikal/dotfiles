@@ -4,7 +4,7 @@
 #   * Path literals (../../foo) are copied into the Nix store — reproducible,
 #     but require a rebuild to pick up edits.
 #   * mkOutOfStoreSymlink points at the live checkout — edits apply instantly,
-#     and is required for configs the app itself writes back to (nvim, raycast).
+#     and is required for configs the app itself writes back to (raycast).
 { config, ... }:
 
 let
@@ -16,7 +16,6 @@ in
   xdg.configFile = {
     # "wezterm".source = ../../wezterm;
     # ghostty config is managed by programs.ghostty (see ghostty.nix).
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/neovim/erki-kickstart";
     "nix".source = ../../nix;
     "kanata".source = ../../kanata;
     "raycast".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/raycast";
