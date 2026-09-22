@@ -15,6 +15,7 @@
     ./lazysql.nix
     ./sofka.nix
     ./yazi.nix
+    ./neovim
     ./zoxide.nix
     ./btop.nix
     ./fastfetch.nix

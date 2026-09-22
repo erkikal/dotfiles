@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     sops-nix.url = "github:Mic92/sops-nix";
     # Upstream pins nixos-26.05 to keep x86_64-darwin support, which this
@@ -25,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nix-homebrew, sops-nix, sofka }:
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nixvim, nix-homebrew, sops-nix, sofka }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#erkik-mac-2
