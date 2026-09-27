@@ -1,7 +1,5 @@
 # Declarative Homebrew management (via nix-homebrew).
-{ ... }:
-
-{
+{...}: {
   homebrew = {
     enable = true;
     casks = [
@@ -77,7 +75,6 @@
       }
     ];
     masApps = {
-
     };
     onActivation = {
       upgrade = true;

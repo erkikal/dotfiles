@@ -1,7 +1,5 @@
 # Zsh: options, init, aliases and custom functions.
-{ ... }:
-
-{
+{...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -52,7 +50,6 @@
       "......" = "cd ../../../../..";
       ybssh = "ssh-add -s /usr/local/lib/libykcs11.dylib";
 
-
       # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
       repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
 
@@ -84,7 +81,7 @@
       rm = "rm -i";
 
       # easier to read disk
-      df = "df -h";     # human-readable sizes
+      df = "df -h"; # human-readable sizes
       free = "free -m"; # show sizes in MB
 
       # Improve common commands

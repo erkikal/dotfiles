@@ -1,7 +1,5 @@
 # jankyborders — window border highlighting.
-{ ... }:
-
-{
+{...}: {
   services.jankyborders = {
     enable = true;
     settings = {

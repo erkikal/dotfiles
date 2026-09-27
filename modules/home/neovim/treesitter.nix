@@ -1,7 +1,5 @@
 # Treesitter.
-{ ... }:
-
-{
+{...}: {
   # nixvim's module targets the **main** branch. `ensure_installed` and
   # `auto_install` have no analogue there and are dropped: grammars come from
   # Nix (`grammarPackages`, which defaults to all of them), so nothing compiles

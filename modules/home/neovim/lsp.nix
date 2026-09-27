@@ -4,9 +4,7 @@
 #
 # Formatters and linters are not here; conform and nvim-lint own those in
 # formatting.nix.
-{ ... }:
-
-{
+{...}: {
   # The old config drove this through `require('mason-lspconfig').setup {
   # handlers = { ... } }`. mason-lspconfig v2 removed `handlers` entirely, so
   # every server setting in that block — including lua_ls's `callSnippet` — was

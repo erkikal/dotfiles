@@ -4,9 +4,7 @@
 # Buffer-local maps are NOT here: the LSP ones are bound on attach (lsp.nix) and
 # gitsigns binds its own inside `on_attach` (git.nix), because both need the
 # buffer they attach to.
-{ ... }:
-
-{
+{...}: {
   # ── lua/keymaps.lua ────────────────────────────────────────────────────────
   #
   # Dropped along the way, all bound to plugins that are not installed:

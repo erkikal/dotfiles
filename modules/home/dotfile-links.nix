@@ -5,12 +5,9 @@
 #     but require a rebuild to pick up edits.
 #   * mkOutOfStoreSymlink points at the live checkout — edits apply instantly,
 #     and is required for configs the app itself writes back to (raycast).
-{ config, ... }:
-
-let
+{config, ...}: let
   dotfiles = "${config.home.homeDirectory}/github/dotfiles";
-in
-{
+in {
   home.file.".zsh".source = ../../zsh;
 
   xdg.configFile = {

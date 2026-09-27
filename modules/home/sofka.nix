@@ -6,9 +6,7 @@
 #
 # sofka carries every Catppuccin flavor as a built-in palette, so naming one is
 # the whole theme setup — no upstream skin source to pin in catppuccin.nix.
-{ ... }:
-
-{
+{...}: {
   programs.sofka = {
     enable = true;
     skin.name = "catppuccin-mocha";

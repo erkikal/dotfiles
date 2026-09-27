@@ -1,7 +1,5 @@
 # System packages, nix settings, fonts and system-level shell/security.
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   #

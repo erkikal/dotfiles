@@ -4,9 +4,7 @@
 # was on $PATH, and conform's `notify_on_error = false` swallowed the complaint.
 # nixvim installs the packages named in `formatters_by_ft` and `lintersByFt`
 # alongside the config, so this cannot drift out of sync again.
-{ ... }:
-
-{
+{...}: {
   # ── Formatting ─────────────────────────────────────────────────────────────
   plugins.conform-nvim = {
     enable = true;
@@ -36,29 +34,29 @@
         end
       '';
       formatters_by_ft = {
-        lua = [ "stylua" ];
+        lua = ["stylua"];
         # Replaces the old `*.tf`/`*.tfvars` BufWritePre autocmd. That one was
         # created inside the LspAttach callback with no `buffer` scoping, so it
         # re-registered itself globally on every attach.
-        terraform = [ "terraform_fmt" ];
-        hcl = [ "terraform_fmt" ];
+        terraform = ["terraform_fmt"];
+        hcl = ["terraform_fmt"];
         # This repo is Nix, so not having a Nix formatter was the conspicuous
         # gap. `alejandra` over `nixfmt` by choice: it is opinionated and needs
         # no configuration.
-        nix = [ "alejandra" ];
-        sh = [ "shfmt" ];
+        nix = ["alejandra"];
+        sh = ["shfmt"];
         # Deliberately no `markdown` entry. prettierd rewrites list markers and
         # rewraps paragraphs, which fights markview's concealed rendering and the
         # checkbox syntax markdown-todo/obsidian expect; markdownlint already
         # covers markdown in the linting section below.
-        javascript = [ "prettierd" ];
-        typescript = [ "prettierd" ];
-        javascriptreact = [ "prettierd" ];
-        typescriptreact = [ "prettierd" ];
-        css = [ "prettierd" ];
-        html = [ "prettierd" ];
-        json = [ "prettierd" ];
-        yaml = [ "prettierd" ];
+        javascript = ["prettierd"];
+        typescript = ["prettierd"];
+        javascriptreact = ["prettierd"];
+        typescriptreact = ["prettierd"];
+        css = ["prettierd"];
+        html = ["prettierd"];
+        json = ["prettierd"];
+        yaml = ["prettierd"];
       };
     };
   };
@@ -67,7 +65,7 @@
   plugins.lint = {
     enable = true;
     autoInstall.enable = true;
-    lintersByFt.markdown = [ "markdownlint" ];
+    lintersByFt.markdown = ["markdownlint"];
     autoCmd = {
       event = [
         "BufEnter"

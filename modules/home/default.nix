@@ -1,7 +1,5 @@
 # Aggregates all home-manager modules for user `erkik`.
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./catppuccin.nix
     ./core.nix

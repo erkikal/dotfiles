@@ -29,13 +29,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, nixvim, nix-homebrew, sops-nix, sofka }:
-  {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    nixvim,
+    nix-homebrew,
+    sops-nix,
+    sofka,
+  }: {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#erkik-mac-2
     darwinConfigurations."erkik-mac-2" = nix-darwin.lib.darwinSystem {
-      specialArgs = { inherit inputs; };
-      modules = [ ./hosts/erkik-mac-2 ];
+      specialArgs = {inherit inputs;};
+      modules = [./hosts/erkik-mac-2];
     };
 
     # Expose the package set, including overlays, for convenience.

@@ -1,14 +1,12 @@
 # Markdown and note-taking: rendering (markview), preview, and the Obsidian
 # vault.
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # `hybrid_modes` was top-level in the old lazy.nvim spec, so lazy never passed
   # it to `setup()` and hybrid mode never actually turned on. In current markview
   # it also moved under `preview`.
   plugins.markview = {
     enable = true;
-    settings.preview.hybrid_modes = [ "n" ];
+    settings.preview.hybrid_modes = ["n"];
   };
 
   plugins.markdown-preview.enable = true;
@@ -48,7 +46,7 @@
         folder = "dailies";
         date_format = "%Y-%m-%d-%a";
         alias_format = "%B %-d, %Y";
-        default_tags = [ "daily-notes" ];
+        default_tags = ["daily-notes"];
       };
 
       completion.min_chars = 2;

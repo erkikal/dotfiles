@@ -1,7 +1,5 @@
 # Diagnostic presentation, and trouble.nvim as the list view for them.
-{ ... }:
-
-{
+{...}: {
   # `vim.diagnostic.config`. Neovim's defaults show virtual text unprefixed and
   # unsorted, so a hint and an error on the same line are indistinguishable at a
   # glance and arrive in whatever order the server sent them.
