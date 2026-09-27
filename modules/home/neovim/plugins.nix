@@ -11,6 +11,9 @@
   };
 
   plugins.illuminate.enable = true;
+  # Renders `#rrggbb` and friends in their own colour. Useful wherever a theme or
+  # a stylesheet is being edited.
+  plugins.colorizer.enable = true;
   plugins.undotree.enable = true;
   plugins.web-devicons.enable = true;
   # `tpope/vim-sleuth` — nixvim calls the module `sleuth`.

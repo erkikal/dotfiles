@@ -27,6 +27,12 @@
         config.settings.Lua.completion.callSnippet = "Replace";
       };
       pyright.enable = true;
+      # This repo is Nix and had no Nix language server at all. `nil` is the one
+      # in nixpkgs that needs no configuration to be useful; formatting comes
+      # from alejandra via conform, not from here.
+      nil_ls.enable = true;
+      # Shell, for the scripts under bin/ and the zsh config.
+      bashls.enable = true;
       # terraform-ls reads static configuration from `init_options`; it does not
       # support `settings`.
       terraformls.enable = true;

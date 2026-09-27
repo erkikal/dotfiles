@@ -8,13 +8,36 @@
   plugins.blink-cmp = {
     enable = true;
     settings = {
-      keymap.preset = "default";
+      # The `default` preset, plus <Tab>/<S-Tab> to walk the menu. The preset's
+      # own <C-n>/<C-p>/<C-y> are all kept; only the two Tab keys are added, and
+      # both fall through when no menu is open so Tab still indents.
+      #
+      # <CR> is deliberately NOT bound to accept. It would swallow the newline
+      # whenever the menu happened to be showing, which is most of the time while
+      # typing — <C-y> stays the explicit accept.
+      keymap = {
+        preset = "default";
+        "<Tab>" = [
+          "select_next"
+          "fallback"
+        ];
+        "<S-Tab>" = [
+          "select_prev"
+          "fallback"
+        ];
+      };
       appearance.nerd_font_variant = "normal";
       signature.enabled = true;
       # `documentation` lives under `completion`, not at the top level. Spelled
       # correctly here: blink validates its schema and warns about unexpected
       # top-level fields, so as `documentation.auto_show` it never took effect.
       completion.documentation.auto_show = true;
+      # `snippets` is in the source list below, but nothing served it until now:
+      # blink's built-in snippet source scans the runtimepath for
+      # friendly-snippets and found no such entry. luasnip is the engine,
+      # friendly-snippets the corpus, and this preset points blink at luasnip
+      # rather than its own minimal built-in expander.
+      snippets.preset = "luasnip";
       sources = {
         default = [
           "lsp"
@@ -43,6 +66,12 @@
       };
     };
   };
+
+  # The snippet engine and corpus behind `sources.default`'s `snippets` entry.
+  # Enabling friendly-snippets is enough to register it: its nixvim module adds an
+  # element to `plugins.luasnip.fromVscode`, which is what triggers the load.
+  plugins.luasnip.enable = true;
+  plugins.friendly-snippets.enable = true;
 
   # Types and completion for the Neovim API when editing Lua config.
   plugins.lazydev = {

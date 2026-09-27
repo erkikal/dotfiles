@@ -244,6 +244,58 @@
         desc = "Leave insert mode";
       };
     }
+    # `jk` alongside `jj`. Both are cheap and the fingers pick whichever.
+    {
+      mode = "i";
+      key = "jk";
+      action = "<Esc>";
+      options = {
+        silent = true;
+        desc = "Leave insert mode";
+      };
+    }
+
+    # `<F1>` sits next to `<Esc>` on most keyboards and opens the help window when
+    # missed, which is disruptive mid-edit — in insert mode it also drops the
+    # buffer. Bound to nothing in every mode that can reach it; `<leader>?` and
+    # `<leader>H` below are the deliberate ways in.
+    {
+      mode = [
+        "n"
+        "i"
+        "v"
+        "x"
+        "s"
+        "o"
+        "t"
+        "c"
+      ];
+      key = "<F1>";
+      action = "<Nop>";
+      options = {
+        silent = true;
+        desc = "Disabled (was: open help)";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>?";
+      action = ":help<Space>";
+      options = {
+        # Not silent, and no <CR>: this leaves the cursor in the command line with
+        # `:help ` typed so a topic can be completed with <Tab>.
+        desc = "Help by topic";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>H";
+      action = "<cmd>execute 'help ' .. expand('<cword>')<CR>";
+      options = {
+        silent = true;
+        desc = "Help for word under cursor";
+      };
+    }
 
     # Stay in visual mode when indenting
     {

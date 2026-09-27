@@ -69,7 +69,9 @@
       lt = "eza --tree --level=2 --long --icons --git";
 
       v = "nvim";
-      vim = "nvim";
+      # No `vim = "nvim"`: nixvim's vimAlias already installs a `vim` that is
+      # nvim, so the alias would only shadow it with the same thing. `vi` comes
+      # from viAlias for the same reason.
       sv = "sudo nvim";
 
       cat = "bat";

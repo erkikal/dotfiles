@@ -16,6 +16,12 @@
 # `defaultEditor` is deliberately not set — core.nix already points EDITOR and
 # VISUAL at nvim, and setting it here would be a second definition of
 # home.sessionVariables.EDITOR.
+#
+# `viAlias`/`vimAlias` need `vim` gone from environment.systemPackages: core.nix
+# puts /run/current-system/sw/bin ahead of ~/.nix-profile/bin in sessionPath, so
+# a system `vim` would win over the alias. It was removed from
+# modules/darwin/nix.nix, along with the duplicate `vim = "nvim"` shell alias in
+# zsh.nix that the aliases now supersede.
 { inputs, pkgs, ... }:
 
 {
@@ -23,6 +29,11 @@
 
   programs.nixvim = {
     enable = true;
+
+    # `vi` and `vim` both launch this nvim. Muscle memory aside, it matters for
+    # anything that shells out to `vi` by name rather than reading $EDITOR.
+    viAlias = true;
+    vimAlias = true;
 
     # Reuse the host's package set rather than letting nixvim import its own from
     # `nixpkgs.source`. Since nixvim's nixpkgs input `follows` ours, evaluating it
