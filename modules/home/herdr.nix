@@ -1,7 +1,5 @@
 # herdr terminal workspace manager.
-{ ... }:
-
-{
+{...}: {
   programs.herdr = {
     enable = true;
     settings = {

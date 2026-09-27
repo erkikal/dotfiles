@@ -16,9 +16,7 @@
 # Global keymaps are collected in keymaps.nix, as they were in lua/keymaps.lua.
 # Buffer-local ones stay with their plugin: LSP binds on attach and gitsigns
 # inside `on_attach`, since both need the buffer.
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./options.nix
     ./colorscheme.nix

@@ -1,9 +1,7 @@
 # bat — cat with syntax highlighting.
 #
 # Catppuccin Mocha theme sourced from upstream (see catppuccin.nix for the pin).
-{ catppuccin, ... }:
-
-{
+{catppuccin, ...}: {
   programs.bat = {
     enable = true;
     config = {

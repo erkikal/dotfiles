@@ -22,10 +22,12 @@
 # a system `vim` would win over the alias. It was removed from
 # modules/darwin/nix.nix, along with the duplicate `vim = "nvim"` shell alias in
 # zsh.nix that the aliases now supersede.
-{ inputs, pkgs, ... }:
-
 {
-  imports = [ inputs.nixvim.homeModules.nixvim ];
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.nixvim.homeModules.nixvim];
 
   programs.nixvim = {
     enable = true;
@@ -41,6 +43,6 @@
     # `follows` moved its pinned revision.
     nixpkgs.pkgs = pkgs;
 
-    imports = [ ./config.nix ];
+    imports = [./config.nix];
   };
 }

@@ -4,9 +4,7 @@
 # comes from the Homebrew cask (see modules/darwin/homebrew.nix) and we set
 # package = null. home-manager only renders $XDG_CONFIG_HOME/ghostty/config.
 # Settings mirror the former ./ghostty/config, which is now superseded by this.
-{ ... }:
-
-{
+{...}: {
   programs.ghostty = {
     enable = true;
     package = null;

@@ -1,7 +1,5 @@
 # Folding, via nvim-ufo.
-{ ... }:
-
-{
+{...}: {
   # The `foldlevel`/`foldlevelstart` pinning ufo needs is in `opts` above.
   plugins.nvim-ufo = {
     enable = true;

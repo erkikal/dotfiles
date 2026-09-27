@@ -2,9 +2,7 @@
 #
 # `enable` is set here, but note the LSP keymaps in lsp.nix resolve through
 # Telescope's pickers, so this is not an optional plugin.
-{ ... }:
-
-{
+{...}: {
   # fzf-native needed `build = 'make'` plus a `cond` on `vim.fn.executable
   # 'make'` under lazy.nvim; Nix builds the native library at package time, so
   # both are gone.

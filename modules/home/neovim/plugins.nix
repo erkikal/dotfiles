@@ -1,9 +1,7 @@
 # Plugins that need no configuration beyond `enable`, or a line or two of it.
 #
 # Anything needing more than that lives in its own file alongside this one.
-{ ... }:
-
-{
+{...}: {
   # ── Editing / navigation extras ────────────────────────────────────────────
   plugins.todo-comments = {
     enable = true;

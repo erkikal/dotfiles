@@ -1,7 +1,5 @@
 # Git integration: gitsigns (hunks, blame, buffer-local keymaps) and fugitive.
-{ ... }:
-
-{
+{...}: {
   plugins.gitsigns = {
     enable = true;
     settings = {

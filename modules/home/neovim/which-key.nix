@@ -1,7 +1,5 @@
 # which-key: the leader-key popup and the group labels it shows.
-{ ... }:
-
-{
+{...}: {
   # The old config carried upstream kickstart's long non-nerd-font `icons.keys`
   # fallback table. `have_nerd_font` is true here, so that branch was dead code;
   # only the nerd-font side is ported.

@@ -1,7 +1,5 @@
 # fastfetch — system info fetch.
-{ ... }:
-
-{
+{...}: {
   programs.fastfetch = {
     enable = true;
     settings = {

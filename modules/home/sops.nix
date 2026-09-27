@@ -6,9 +6,7 @@
 # sops decrypts it at activation using the age key. (A runtime path string like
 # "${config.home.homeDirectory}/…" would instead read the file live from the
 # working copy — breaking builds from a worktree or before the file exists.)
-{ config, ... }:
-
-{
+{config, ...}: {
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 

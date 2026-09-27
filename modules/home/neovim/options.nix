@@ -1,9 +1,7 @@
 # Editor options, globals and filetype autocommands.
 #
 # Ported from the old config's init.lua (globals) and lua/options.lua (the rest).
-{ ... }:
-
-{
+{...}: {
   # ── init.lua ───────────────────────────────────────────────────────────────
   globals = {
     mapleader = " ";

@@ -8,15 +8,19 @@
 # The upstream theme's `syntect_theme` (for code-preview syntax highlighting)
 # points at a tmTheme it does not ship; catppuccin/yazi directs you to the bat
 # repo for it, so we override it to the tmTheme we already fetch for bat.
-{ catppuccin, lib, pkgs, ... }:
-
 {
+  catppuccin,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "yy";
 
-    theme = lib.recursiveUpdate
+    theme =
+      lib.recursiveUpdate
       (builtins.fromTOML (
         builtins.readFile "${catppuccin.yazi}/themes/mocha/catppuccin-mocha-sapphire.toml"
       ))
@@ -37,7 +41,7 @@
       mgr.prepend_keymap = [
         {
           on = "l";
-          run  = "plugin smart-enter";
+          run = "plugin smart-enter";
           desc = "Enter the child directory, or open the file";
         }
         {

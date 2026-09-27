@@ -1,7 +1,10 @@
 # Base home-manager settings: identity, packages, environment, nh.
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   home = {
     username = "erkik";
     homeDirectory = "/Users/erkik";

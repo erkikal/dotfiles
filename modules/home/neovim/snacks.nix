@@ -1,7 +1,5 @@
 # snacks.nvim.
-{ ... }:
-
-{
+{...}: {
   # Two keys in the old opts were typos and therefore inert: `intent` (for
   # `indent`) and `statuscolum` (for `statuscolumn`). Spelled correctly here —
   # and nixvim would have failed evaluation on the misspellings rather than
@@ -17,7 +15,7 @@
         # exist here, so it throws on every UIEnter. The other two are respelled
         # as upstream has them, minus that section.
         sections = [
-          { section = "header"; }
+          {section = "header";}
           {
             section = "keys";
             gap = 1;

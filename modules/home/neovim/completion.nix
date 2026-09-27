@@ -1,7 +1,5 @@
 # Completion (blink.cmp) and the Lua-development types that feed it.
-{ ... }:
-
-{
+{...}: {
   # blink.cmp replaces nvim-cmp, LuaSnip, cmp_luasnip, cmp-nvim-lsp and
   # cmp-path. It carries its own snippet engine and LSP capabilities, so the
   # `make_client_capabilities` plumbing the old config did by hand is gone.
@@ -79,7 +77,7 @@
     settings.library = [
       {
         path = "\${3rd}/luv/library";
-        words = [ "vim%.uv" ];
+        words = ["vim%.uv"];
       }
     ];
   };

@@ -8,9 +8,12 @@
 # ANTHROPIC_AUTH_TOKEN at shell start from the sops-decrypted files (mode 0400,
 # user-only). This also means the config evaluates/builds fine when the secrets
 # are not yet present.
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.claude-code = {
     enable = true;
     settings = {
@@ -57,8 +60,7 @@
     # The integration's hook script, taken from the same herdr revision as the
     # binary so its version marker stays in step with what herdr expects. Do
     # not run `herdr integration install claude` on top of this.
-    hooks."herdr-agent-state.sh" =
-      "${pkgs.herdr.src}/src/integration/assets/claude/herdr-agent-state.sh";
+    hooks."herdr-agent-state.sh" = "${pkgs.herdr.src}/src/integration/assets/claude/herdr-agent-state.sh";
   };
 
   programs.zsh.initContent = lib.mkAfter ''

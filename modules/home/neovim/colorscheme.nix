@@ -1,7 +1,5 @@
 # Catppuccin, the colorscheme.
-{ ... }:
-
-{
+{...}: {
   # In the lazy.nvim spec `flavour` and `integrations` sat at the top level
   # instead of inside `opts`, so both were ignored and the flavour stayed
   # `auto`. Here a misplaced key is an evaluation error.

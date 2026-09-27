@@ -1,7 +1,5 @@
 # macOS system defaults (dock, finder, global domain, screenshots).
-{ ... }:
-
-{
+{...}: {
   system.defaults = {
     dock.autohide = true;
     dock.mru-spaces = false;
