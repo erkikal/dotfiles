@@ -4,6 +4,10 @@
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
+  #
+  # No `vim` here: nixvim provides `vi` and `vim` as aliases for nvim
+  # (modules/home/neovim/default.nix), and this profile comes first on PATH, so a
+  # system vim would shadow them.
   environment.systemPackages = with pkgs; [
     age
     bat
@@ -17,7 +21,6 @@
     nvd
     sops
     starship
-    vim
     vivid
     yazi
     zoxide

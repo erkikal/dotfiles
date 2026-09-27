@@ -25,6 +25,7 @@
     ./keymaps.nix
 
     ./lsp.nix
+    ./diagnostics.nix
     ./completion.nix
     ./formatting.nix
     ./treesitter.nix

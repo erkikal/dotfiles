@@ -64,6 +64,10 @@
           __unkeyed-1 = "<leader>n";
           group = "[N]otifications";
         }
+        {
+          __unkeyed-1 = "<leader>l";
+          group = "Diagnostics / [L]ists";
+        }
       ];
     };
   };

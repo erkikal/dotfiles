@@ -42,6 +42,23 @@
         # re-registered itself globally on every attach.
         terraform = [ "terraform_fmt" ];
         hcl = [ "terraform_fmt" ];
+        # This repo is Nix, so not having a Nix formatter was the conspicuous
+        # gap. `alejandra` over `nixfmt` by choice: it is opinionated and needs
+        # no configuration.
+        nix = [ "alejandra" ];
+        sh = [ "shfmt" ];
+        # Deliberately no `markdown` entry. prettierd rewrites list markers and
+        # rewraps paragraphs, which fights markview's concealed rendering and the
+        # checkbox syntax markdown-todo/obsidian expect; markdownlint already
+        # covers markdown in the linting section below.
+        javascript = [ "prettierd" ];
+        typescript = [ "prettierd" ];
+        javascriptreact = [ "prettierd" ];
+        typescriptreact = [ "prettierd" ];
+        css = [ "prettierd" ];
+        html = [ "prettierd" ];
+        json = [ "prettierd" ];
+        yaml = [ "prettierd" ];
       };
     };
   };
