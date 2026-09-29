@@ -112,6 +112,15 @@
         mkdir -p -- "$1" && cd -P -- "$1"
       '';
 
+      # Show every local network interface that is up and has an IPv4 address
+      "ip-addr" = ''
+        for i in $(ifconfig -lu); do
+          if ifconfig $i | grep -q "inet "; then
+            ifconfig $i
+          fi
+        done
+      '';
+
       # Set AWS_PROFILE environment variable
       "aws-profile" = ''
         aws-profile() {
