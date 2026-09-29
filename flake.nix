@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    sops-nix.url = "github:Mic92/sops-nix";
     # Upstream pins nixos-26.05 to keep x86_64-darwin support, which this
     # aarch64-only host does not need; following nixpkgs builds sofka against
     # the same unstable set as everything else and avoids a second nixpkgs.
@@ -36,7 +35,6 @@
     home-manager,
     nixvim,
     nix-homebrew,
-    sops-nix,
     sofka,
   }: {
     # Build darwin flake using:
