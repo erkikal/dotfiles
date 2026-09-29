@@ -21,6 +21,5 @@
     ./ghostty.nix
     ./claude.nix
     ./herdr.nix
-    ./sops.nix
   ];
 }
