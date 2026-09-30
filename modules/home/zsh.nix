@@ -104,6 +104,8 @@
       NUL = ">/dev/null 2>&1";
 
       C = "| pbcopy";
+
+      EF = "2>&1 | tee";
     };
 
     siteFunctions = {
