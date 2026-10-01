@@ -167,6 +167,58 @@
           _arguments '1: :_aws_profiles'
         }
       '';
+
+      "nmap_table" = ''
+        nmap_table() {
+          emulate -L zsh
+          local target="$1"
+          local outfile="''${2:-hosts.md}"
+
+          if [[ -z "$target" ]]; then
+            print -u2 "Usage: nmap_table <target> [outfile]"
+            print -u2 "Example: nmap_table 192.168.1.0/24 hosts.md"
+            return 1
+          fi
+
+          if ! command -v nmap >/dev/null 2>&1; then
+            print -u2 "Error: nmap is not installed or not in PATH."
+            return 1
+          fi
+
+          nmap -sn "$target" 2>&1 | tee >(
+            {
+              echo "| Hostname | IP Address |"
+              echo "|----------|------------|"
+              grep "Nmap scan report for" | awk '{
+                if (match($0, /\(([0-9.]+)\)/)) {
+                  ip = substr($0, RSTART+1, RLENGTH-2)
+                  host = $0
+                  sub(/Nmap scan report for /, "", host)
+                  sub(/ \(.*\)/, "", host)
+                } else {
+                  ip = $NF
+                  host = "-"
+                }
+                printf "| %s | %s |\n", host, ip
+              }'
+            } > "$outfile"
+          )
+
+          local nmap_status=''${pipestatus[1]}
+
+          if (( nmap_status != 0 )); then
+          print -u2 "Error: nmap exited with status $nmap_status. Table may be incomplete."
+          return $nmap_status
+          fi
+
+          if [[ ! -s "$outfile" ]]; then
+          print -u2 "Warning: $outfile is empty — no hosts found or parsing failed."
+          return 1
+          fi
+
+          print "Markdown table saved to $outfile"
+        }
+      '';
     };
   };
 }
