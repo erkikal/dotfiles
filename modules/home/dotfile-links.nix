@@ -1,21 +1,15 @@
 # Links raw app configs from this repo into $HOME / $XDG_CONFIG_HOME.
 #
-# Two strategies:
-#   * Path literals (../../foo) are copied into the Nix store — reproducible,
-#     but require a rebuild to pick up edits.
-#   * mkOutOfStoreSymlink points at the live checkout — edits apply instantly,
-#     and is required for configs the app itself writes back to (raycast).
-{config, ...}: let
-  dotfiles = "${config.home.homeDirectory}/github/dotfiles";
-in {
+# The sources are path literals (../../foo), so Nix copies them into the store:
+# reproducible, but an edit needs a rebuild to take effect.
+#
+# Everything else this repo used to link is now generated from a module under
+# modules/home instead — these are the configs no home-manager module covers.
+{...}: {
   home.file.".zsh".source = ../../zsh;
 
   xdg.configFile = {
-    # "wezterm".source = ../../wezterm;
-    # ghostty config is managed by programs.ghostty (see ghostty.nix).
-    "nix".source = ../../nix;
     "kanata".source = ../../kanata;
-    "raycast".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/raycast";
     "sketchybar".source = ../../sketchybar;
   };
 }

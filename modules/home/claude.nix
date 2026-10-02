@@ -4,10 +4,10 @@
 # Neither value is baked into settings.json: that file is generated into the
 # world-readable Nix store (mode 444), so a `builtins.readFile` of either would
 # publish it — the token obviously, and the gateway's hostname because it names
-# internal infrastructure. Instead we export ANTHROPIC_BASE_URL and
-# ANTHROPIC_AUTH_TOKEN at shell start from the sops-decrypted files (mode 0400,
-# user-only). This also means the config evaluates/builds fine when the secrets
-# are not yet present.
+# internal infrastructure. Instead we decrypt both at shell start and export
+# ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN from the values, so they exist
+# only in the shell's environment. This also means the config evaluates/builds
+# fine when the age key is not present.
 {
   config,
   lib,
@@ -63,12 +63,35 @@
     hooks."herdr-agent-state.sh" = "${pkgs.herdr.src}/src/integration/assets/claude/herdr-agent-state.sh";
   };
 
+  # This used to read files that sops-nix staged on a RAM disk, but its darwin
+  # backend is dead on macOS 27: `hdiutil attach -nomount ram://N` is deprecated
+  # there, and although it still prints a device path it creates no device node,
+  # so `newfs_hfs` fails and no secret is ever written. The failure was silent
+  # because the old `[ -r <path> ]` guards simply skipped both exports. (The
+  # replacement `diskutil image attach --noMount ram://N` fails too, so patching
+  # sops-nix's mount strategy would not have helped.)
+  #
+  # Decrypting here instead keeps the plaintext off every filesystem rather than
+  # on a RAM disk, and drops sops-nix from the config entirely. The ciphertext is
+  # a path literal, so Nix copies it into the store — fine, it is encrypted.
+  # `--extract` prints the bare value with no trailing newline. Two calls cost
+  # ~40ms per shell start, well under the `fastfetch` already in zsh.nix.
+  #
+  # The `-n` guards matter: on a decrypt failure this exports nothing, rather
+  # than an empty ANTHROPIC_BASE_URL that the CLI would try to reach.
   programs.zsh.initContent = lib.mkAfter ''
-    if [ -r "${config.sops.secrets.claude_prod_url.path}" ]; then
-      export ANTHROPIC_BASE_URL="$(cat ${config.sops.secrets.claude_prod_url.path})"
-    fi
-    if [ -r "${config.sops.secrets.claude_prod_token.path}" ]; then
-      export ANTHROPIC_AUTH_TOKEN="$(cat ${config.sops.secrets.claude_prod_token.path})"
+    if [ -r "$HOME/.config/sops/age/keys.txt" ]; then
+      _claude_sops() {
+        SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt" \
+          ${pkgs.sops}/bin/sops -d --extract "[\"$1\"]" \
+          ${../../secrets/claude.yaml} 2>/dev/null
+      }
+      _claude_url="$(_claude_sops claude_prod_url)"
+      _claude_token="$(_claude_sops claude_prod_token)"
+      [ -n "$_claude_url" ] && export ANTHROPIC_BASE_URL="$_claude_url"
+      [ -n "$_claude_token" ] && export ANTHROPIC_AUTH_TOKEN="$_claude_token"
+      unset _claude_url _claude_token
+      unfunction _claude_sops
     fi
   '';
 }
