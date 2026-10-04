@@ -5,6 +5,7 @@
     ./core.nix
     ./dotfile-links.nix
     ./zsh.nix
+    ./zsh-plugins.nix
     ./git.nix
     ./starship.nix
     ./atuin.nix
