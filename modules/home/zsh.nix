@@ -19,9 +19,6 @@
 
       fastfetch -c examples/8
 
-      source ~/.zsh/git/git.plugin.zsh
-      source ~/.zsh/kubectl/kubectl.plugin.zsh
-
       # keybinding
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;5C" forward-word
@@ -49,6 +46,13 @@
       "....." = "cd ../../../..";
       "......" = "cd ../../../../..";
       ybssh = "ssh-add -s /usr/local/lib/libykcs11.dylib";
+
+      # Local additions, never part of the upstream kubectl plugin: they were
+      # added to the vendored copy in 3e2d4e1, so they have to live here now
+      # that the plugin comes from pkgs.oh-my-zsh. Loaded at order 1100, after
+      # the plugin at 900, so they win regardless.
+      kg = "kubectl get";
+      kd = "kubectl describe";
 
       # Indent clipboard with space, so if pasted to shell (bash/zsh), it doesn't get saved in history file
       repaste = "pbpaste | sed -e \"s/^/ /\" | pbcopy";
